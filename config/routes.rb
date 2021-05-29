@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index, :destroy]
 
-  resources :docs, except [:destroy] do
+  resources :docs, except: [:destroy] do
     resources :versions, only: [:create] do
       resources :comments, only: [:create]
     end
