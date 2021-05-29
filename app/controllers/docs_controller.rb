@@ -17,11 +17,10 @@ class DocsController < ApplicationController
       redirect_to @doc
     else
       render :new
+    end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   private
 
