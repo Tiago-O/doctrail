@@ -1,0 +1,8 @@
+<%= simple_form_for @doc do |f|%>
+    <%= f.input :title %>
+    <%= f.input :text %>
+    <%#= f.simple_fields_for :userdocs do |pf| %>
+        <%#= pf.association :user, label_method: :first_name, input_html: { class: 'Select2' } %>
+      <%# end %>
+    <%= f.submit %>
+  <% end %>
