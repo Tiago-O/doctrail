@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :versions
   has_many :comments
 
+  has_one_attached :photo
+
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
   validates :address, presence: true, length: { minimum: 2 }
