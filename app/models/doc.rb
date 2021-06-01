@@ -6,4 +6,6 @@ class Doc < ApplicationRecord
   validates :text, presence: true
 
   accepts_nested_attributes_for :userdocs
+  # validates :locked, presence: true
+  # validates :final, presence: true
 end
