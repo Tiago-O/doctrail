@@ -1,3 +1,12 @@
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 85px; /* Footer height */
+}
+
 .footer {
   background: white;
   display: flex;
@@ -32,12 +41,3 @@
 .footer .fa-heart {
   color: #D23333;
 }
-
-// #page-container {
-//   position: relative;
-//   min-height: 100vh;
-// }
-
-// #content-wrap {
-//   padding-bottom: 85px;    /* Footer height */
-// }
