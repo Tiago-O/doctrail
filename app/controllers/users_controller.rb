@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
 
-  def show; end
+  def show
+    @docs = Doc.joins(:userdocs).where("userdocs.user_id = ?", current_user)
+  end
 
   def edit; end
 
