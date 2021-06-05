@@ -1,4 +1,15 @@
 <div class="container">
   <%= @version.text %>
   <p> <%= link_to 'Document', doc_path(@version.doc) %></p>
+
+  <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
+    <%= f.input :text %>
+    <%= f.submit 'New comment', class: 'btn btn-primary mb-4' %>
+  <% end %>
+
+  <h5>Comments:</h5>
+  <% @comments.each do |comment| %>
+    <p><%= comment.text %></p>
+  <% end %>
+
 </div>

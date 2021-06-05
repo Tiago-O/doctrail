@@ -5,7 +5,10 @@ class VersionsController < ApplicationController
     @versions = Version.all
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments = Comment.where(version_id: @version).order(created_at: :desc)
+  end
 
   def new
     @version = Version.new
