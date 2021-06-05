@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2021_05_30_211304) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "repos", force: :cascade do |t|
+    t.boolean "owner", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "doc_id", null: false
+    t.index ["doc_id"], name: "index_repos_on_doc_id"
+    t.index ["user_id"], name: "index_repos_on_user_id"
+  end
+
   create_table "userdocs", force: :cascade do |t|
     t.bigint "doc_id", null: false
     t.bigint "user_id", null: false
@@ -96,6 +106,8 @@ ActiveRecord::Schema.define(version: 2021_05_30_211304) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "versions"
+  add_foreign_key "repos", "docs"
+  add_foreign_key "repos", "users"
   add_foreign_key "userdocs", "docs"
   add_foreign_key "userdocs", "users"
   add_foreign_key "versions", "docs"
