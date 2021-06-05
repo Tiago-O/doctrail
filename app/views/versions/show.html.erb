@@ -5,7 +5,7 @@
   <p> <%= link_to 'Return to master document', doc_path(@version.doc), class: 'btn btn-primary btn-decoration' %></p>
 
   <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
-    <%= f.input :text %>
+    <%= f.input :text, label: 'Insert a comment' %>
     <%= f.submit 'New comment', class: 'btn btn-primary mb-4' %>
   <% end %>
 
