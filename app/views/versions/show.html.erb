@@ -1,6 +1,4 @@
 <div class="container">
-  <%= @version.text %>
-  <p> <%= link_to 'Document', doc_path(@version.doc) %></p>
 
   <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
     <%= f.input :text %>
@@ -11,5 +9,8 @@
   <% @comments.each do |comment| %>
     <p><%= comment.text %></p>
   <% end %>
+  
+  <p><%= @version.text %></p>
+  <p> <%= link_to 'Return to master document', doc_path(@version.doc) %></p>
 
 </div>
