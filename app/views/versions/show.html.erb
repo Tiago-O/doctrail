@@ -1,5 +1,9 @@
 <div class="container">
 
+  <p><%= @version.text %></p>
+
+  <p> <%= link_to 'Return to master document', doc_path(@version.doc), class: 'btn btn-primary btn-decoration' %></p>
+
   <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
     <%= f.input :text %>
     <%= f.submit 'New comment', class: 'btn btn-primary mb-4' %>
@@ -9,8 +13,5 @@
   <% @comments.each do |comment| %>
     <p><%= comment.text %></p>
   <% end %>
-  
-  <p><%= @version.text %></p>
-  <p> <%= link_to 'Return to master document', doc_path(@version.doc) %></p>
 
 </div>
