@@ -33,8 +33,17 @@ class VersionsController < ApplicationController
   def edit; end
 
   def update
+    doc = @version.doc
     @version.update(version_params)
-    redirect_to @version
+    if @version.accepted
+      doc.locked = false
+      if doc.save
+        redirect_to @version
+      end
+    else
+      flash[:alert] = 'unlocking the document failed'
+      render :show
+    end
   end
 
   private
@@ -44,6 +53,6 @@ class VersionsController < ApplicationController
   end
 
   def version_params
-    params.require(:version).permit(:text, :user_id, :doc_id)
+    params.require(:version).permit(:text, :accepted, :user_id, :doc_id)
   end
 end

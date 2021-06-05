@@ -7,9 +7,6 @@ class DocsController < ApplicationController
 
   def show
     @last_version = @doc.versions.last
-    if @last_version.accepted == true
-      @doc.locked = false
-    end
   end
 
   def new

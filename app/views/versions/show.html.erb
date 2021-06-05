@@ -18,9 +18,9 @@
     <p class='btn btn-secundary mb-4'>no comments</p>
   <% end %>
 
-  <% if !@version.accepted  %>
-    <%= simple_form_for @version, method: :patch, url: versions_path do |f|%>
-      <%= f.input :accepted, as: :hidden %>
+  <% if !@version.accepted && @version.user != current_user %>
+    <%= simple_form_for @version, method: :put, url: version_path(@version) do |f|%>
+      <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
       <%= f.submit 'Accept', class: 'btn btn-primary mb-4' %>
     <% end %>
   <% end %>
