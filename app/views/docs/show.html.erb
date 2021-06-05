@@ -2,6 +2,13 @@
   <h2><%= @doc.title %></h2>
   <p><%= @doc.text %></p>
 
+  <%= link_to 'Edit', edit_doc_path(@doc) %>
+  <% if @doc.locked %>
+    <p><%=Document is locked%></p>
+  <% else %>
+    <%= link_to 'New Version', new_doc_version_path(@doc) %>
+  <% end %>
+
   <p><%= link_to 'Return to Dashboard', user_path(current_user) %></p>
 
   <p><%= link_to 'Edit this document', edit_doc_path(@doc) %></p>
