@@ -22,6 +22,8 @@ class VersionsController < ApplicationController
     @version.doc = @doc
     @version.user = @user
     if @version.save
+      @doc.locked = true
+      @doc.save
       redirect_to @version
     else
       render :new

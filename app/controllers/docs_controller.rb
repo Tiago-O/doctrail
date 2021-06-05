@@ -5,7 +5,12 @@ class DocsController < ApplicationController
     @docs = Doc.all
   end
 
-  def show;end
+  def show
+    @last_version = @doc.versions.last
+    if @last_version.accepted == true
+      @doc.locked = false
+    end
+  end
 
   def new
     @doc = Doc.new
