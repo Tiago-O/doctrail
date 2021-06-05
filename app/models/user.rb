@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :repos
-  has_many :docs, through: :repos
+  has_many :userdocs
+  has_many :docs, through: :userdocs
   has_many :versions
   has_many :comments
+
+  has_one_attached :photo
 
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }

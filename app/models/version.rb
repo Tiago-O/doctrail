@@ -1,7 +1,7 @@
 class Version < ApplicationRecord
-  belongs_to :docs
+  belongs_to :doc
   has_many :comments
-  has_many :users, through: :docs
+  belongs_to :user
 
   validates :text, presence: true
 end

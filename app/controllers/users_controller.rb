@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
 
-  def show; end
+  def show
+    @docs = Doc.joins(:userdocs).where("userdocs.user_id = ?", current_user)
+  end
 
   def edit; end
 
@@ -17,6 +19,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :address, :phone_number, :company, :email)
+    params.require(:user).permit(:first_name, :last_name, :address, :phone_number, :company, :email, :photo)
   end
 end

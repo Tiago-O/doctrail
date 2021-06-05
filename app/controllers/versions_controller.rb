@@ -5,16 +5,22 @@ class VersionsController < ApplicationController
     @versions = Version.all
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments = Comment.where(version_id: @version).order(created_at: :desc)
+  end
 
   def new
     @version = Version.new
+    @doc = Doc.find(params[:doc_id])
   end
 
   def create
     @version = Version.new(version_params)
+    @doc = Doc.find(params[:doc_id])
+    @user = current_user
     @version.doc = @doc
-    @version.user = current_user
+    @version.user = @user
     if @version.save
       redirect_to @version
     else

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RepoTest < ActiveSupport::TestCase
+class UserdocTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

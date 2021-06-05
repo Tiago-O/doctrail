@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <%= stylesheet_pack_tag 'application' %>
 
@@ -15,12 +15,13 @@
   </head>
 
   <body>
-    <%= render 'shared/flashes' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= render 'shared/navbar' %>
-
-    <%= yield %>
+    <div id="page-container">
+      <div id="content-wrap">
+        <%= render 'shared/flashes' %>
+        <%= render 'shared/navbar' %>
+        <%= yield %>
+        <%= render 'shared/footer' %>
+      </div>
+    </div>
   </body>
 </html>

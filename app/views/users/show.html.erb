@@ -1,0 +1,9 @@
+<div class="container mt-4">
+
+  <h5 class="btn btn-primary btn-decoration"><%= link_to 'Create new document', new_doc_path %></h5>
+
+  <h5>Documents:</h5>
+  <% @docs.each do |doc| %>
+    <p><%= link_to doc.title, doc_path(doc) %></p>
+  <% end %>
+</div>
