@@ -2,16 +2,16 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
 
   def create
-    @comment = Comment.new(comments_params)
-    @doc = Doc.find(params[:id])
+    @comment = Comment.new(comment_params)
+    @version = Version.find(params[:version_id])
     @user = current_user
-    @comment.doc = @doc
+    @comment.version = @version
     @comment.user = @user
 
-    if comment.save
-      redirect_to @doc
+    if @comment.save
+      redirect_to @version
     else
-      render 'doc/show'
+      render 'version/show'
     end
   end
 
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def comments_params
+  def comment_params
     params.require(:comment).permit(:text, :user_id, :version_id)
   end
 end
