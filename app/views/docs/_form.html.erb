@@ -1,8 +1,21 @@
 <%= simple_form_for @doc do |f|%>
-    <%= f.input :title %>
-    <%= f.input :text %>
+    <div class="form-inputs">
+      <%= f.input :title %>
+    </div>
+
+    <!-- insert these three line of code below -->
+    <div class="form-inputs">
+      <%= f.rich_text_area :rich_body %>
+    </div>
+
+    <div class="form-actions mt-3">
+      <%= f.submit %>
+    </div>
+    <%#= f.input :title %>
+    <%#= f.input :text %>
     <%#= f.simple_fields_for :userdocs do |pf| %>
         <%#= pf.association :user, label_method: :first_name, input_html: { class: 'Select2' } %>
       <%# end %>
-    <%= f.submit %>
+    <%#= f.submit %>
   <% end %>
+
