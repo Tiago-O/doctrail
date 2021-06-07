@@ -34,7 +34,7 @@ class DocsController < ApplicationController
   private
 
   def doc_params
-    params.require(:doc).permit(:title, :text)
+    params.require(:doc).permit(:title, :text, :rich_body)
     # params.require(:doc).permit(:title, :text, userdocs_attributes: [:doc, :owner, user: []])
   end
 
