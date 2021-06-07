@@ -2,16 +2,26 @@
 
   <p><%= @version.text %></p>
 
-  <p> <%= link_to 'Return to master document', doc_path(@version.doc), class: 'btn btn-primary btn-decoration' %></p>
+  <p> <%= link_to 'Return to main document', doc_path(@version.doc), class: 'btn btn-primary btn-decoration' %></p>
 
   <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
     <%= f.input :text, label: 'Insert a comment' %>
-    <%= f.submit 'New comment', class: 'btn btn-primary mb-4' %>
+    <%= f.submit 'Publish comment', class: 'btn btn-primary mb-4' %>
   <% end %>
 
-  <h5>Comments:</h5>
-  <% @comments.each do |comment| %>
-    <p><%= comment.text %></p>
+  <% if @comments.any? %>
+    <h5>Comments:</h5>
+    <% @comments.each do |comment| %>
+      <p><%= comment.text %></p>
+    <% end %>
+    <% else %>
+    <p class='btn btn-secundary mb-4'>no comments</p>
   <% end %>
 
+  <% if !@version.accepted && @version.user != current_user %>
+    <%= simple_form_for @version, method: :put, url: version_path(@version) do |f|%>
+      <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
+      <%= f.submit 'Accept', class: 'btn btn-primary mb-4' %>
+    <% end %>
+  <% end %>
 </div>
