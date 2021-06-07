@@ -13,6 +13,7 @@ class VersionsController < ApplicationController
   def new
     @version = Version.new
     @doc = Doc.find(params[:doc_id])
+    @version.rich_body = @doc.rich_body
   end
 
   def create
@@ -37,8 +38,9 @@ class VersionsController < ApplicationController
     @version.update(version_params)
     if @version.accepted
       doc.locked = false
+      doc.rich_body = @version.rich_body
       if doc.save
-        redirect_to @version
+        redirect_to doc
       end
     else
       flash[:alert] = 'unlocking the document failed'
@@ -53,6 +55,6 @@ class VersionsController < ApplicationController
   end
 
   def version_params
-    params.require(:version).permit(:text, :accepted, :user_id, :doc_id)
+    params.require(:version).permit(:text, :rich_body, :accepted, :user_id, :doc_id)
   end
 end

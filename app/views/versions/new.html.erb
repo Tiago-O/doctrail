@@ -1,7 +1,11 @@
 <div class="container">
   <%= simple_form_for [@doc, @version] do |f|%>
-      <%= f.input :text, :input_html => { :value => "#{@doc.text}" } %>
-      <%= f.submit %>
-    <% end %>
-</div>
+    <div class="form-inputs">
+      <%= f.rich_text_area :rich_body %>
+    </div>
 
+    <div class="form-actions mt-3">
+      <%= f.submit :submit %>
+    </div>
+  <% end %>
+</div>

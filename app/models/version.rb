@@ -1,7 +1,9 @@
 class Version < ApplicationRecord
+  has_rich_text :rich_body
+
   belongs_to :doc
   has_many :comments
   belongs_to :user
 
-  validates :text, presence: true
+  validates :rich_body, presence: true
 end
