@@ -5,9 +5,7 @@ class DocsController < ApplicationController
     @docs = Doc.all
   end
 
-  def show
-    @last_version = @doc.versions.last
-  end
+  def show; end
 
   def new
     @doc = Doc.new
