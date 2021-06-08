@@ -1,6 +1,13 @@
+<% Differ.format = :html %>
+
 <div class="container">
 
-  <p><%= @version.rich_body %></p>
+  <div class="texts_comparison d-flex">
+    <p><%= sanitize Differ.diff_by_word(@version.rich_body.to_plain_text, @version.doc.rich_body.to_plain_text).to_s %></p>
+    <p><%= @version.doc.rich_body%></p>
+  </div>
+
+  <!-- <del class="differ">Tu</del><ins class="differ">Eu</ins> es grande<ins class="differ"> ok</ins> -->
 
   <p> <%= link_to 'Return to main document', doc_path(@version.doc), class: 'btn btn-primary btn-decoration' %></p>
 
