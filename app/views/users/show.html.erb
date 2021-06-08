@@ -1,3 +1,195 @@
+
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <h2><span class="la la-file-code"></span><span>docTrail</span></h2> 
+  </div>
+
+  <div class="sidebar-menu">
+    <ul>
+      <li>
+        <a href="" class="active"><span class="las la-file-prescription"></span>
+        <span>Dashboard</span></a>
+      </li>
+      <li>
+        <a href=""><span class= "las la-file-alt"></span>
+        <span>Documents</span></a>
+      </li>
+      <li>
+        <a href=""><span class= "las la-file-download"></span>
+        <span>Versions</span></a>
+      </li>
+      <li>
+        <a href=""><span class= "las la-file-upload"></span>
+        <span>Finished Projects</span></a>
+      </li>   
+    </ul>
+  </div>
+</div>
+
+<div class="main-content">
+  <header>
+    <h2>
+      <label for="nav-toggle">
+        <span class="las la-bars"></span>
+      </label>
+
+      Dashboard
+    </h2>
+
+    <div class="search-wrapper">
+      <span class="las la-search"></span>
+      <input type="search" placeholder="Search here"/>
+    </div>
+
+    <div class="user-wrapper">
+      <div>
+        <h4><%= @user.first_name %></h4>
+        <small> <%= @user.company %></small>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="cards">
+      <div class="card-single">
+        <div>
+          <h1><%= @user.docs.count %></h1>           <%# NEEDS TO BE DYNAMIC %>
+            <span>Documents</span>
+        </div>
+        <div>
+          <span class="las la-folder-open"></span>
+        </div>
+      </div>
+      <div class="card-single">
+        <div>
+          <h1>39</h1>           <%# NEEDS TO BE DYNAMIC %>
+            <span>Versions</span>
+        </div>
+        <div>
+          <span class="las la-clipboard"></span>
+        </div>
+      </div>
+      <div class="card-single">
+        <div>
+          <h1>20</h1>           <%# NEEDS TO BE DYNAMIC %>
+            <span>Finished Projects</span>
+        </div>
+        <div>
+          <span class="las la-file-signature"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="recent-grid">
+      <div class="projects">
+        <div class="card">
+          <div class="card-header">
+            <h3>Recent Projects</h3>
+            <button>See All <span class="las la-arrow-right"></span></button>
+          </div>
+
+          <div class="card-body">
+            <table width='100%'>
+              <thead>
+                <tr>
+                  <td>Project Title</td>
+                  <td>Department</td>
+                  <td>Status</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UI design</td>
+                  <td>Web development</td>
+                  <td>
+                    <span class="status purple"></span>
+                    review
+                  </td>
+                </tr>
+                <tr>
+                  <td>Web Development</td>
+                  <td>Frontend</td>
+                  <td>
+                    <span class="status blue"></span>
+                    In Progress
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ushop app</td>
+                   <td>Mobile development</td>
+                  <td>
+                    <span class="status orange"></span>
+                    Pending
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="customers">
+        <div class="card">
+          <div class="card-header">
+            <h3>New Things</h3>
+            <button>See All <span class="las la-arrow-right">
+            </span></button>
+          </div>
+
+          <div class="card-body">
+            <div class="customer">
+              <div class="info">
+                <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
+                <div>
+                  <h4><%= @user.first_name %> <%= @user.last_name %></h4>  
+                  <small><%= @user.company %></small>  
+                </div>
+              </div>
+                <div class="contact">
+                  <span class="las la-user-circle"></span>
+                  <span class="las la-comment"></span>
+                  <span class="las la-phone"></span>
+                </div>
+              </div>
+              <div class="customer">
+              <div class="info">
+                <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
+                <div>
+                  <h4>Diogo Broco</h4>  <%# NEEDS TO BE DYNAMIC %>
+                  <small>Pipedrive</small>  <%# NEEDS TO BE DYNAMIC %>
+                </div>
+              </div>
+                <div class="contact">
+                  <span class="las la-user-circle"></span>
+                  <span class="las la-comment"></span>
+                  <span class="las la-phone"></span>
+                </div>
+              
+            </div>
+            <div class="customer">
+              <div class="info">
+                <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
+                <div>
+                  <h4>Diogo Broco</h4>  <%# NEEDS TO BE DYNAMIC %>
+                  <small>Pipedrive</small>  <%# NEEDS TO BE DYNAMIC %>
+                </div>
+              </div>
+                <div class="contact">
+                  <span class="las la-user-circle"></span>
+                  <span class="las la-comment"></span>
+                  <span class="las la-phone"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
 <div class="container mt-4">
 
   <h5 class="btn btn-primary btn-decoration"><%= link_to 'Create new document', new_doc_path %></h5>
