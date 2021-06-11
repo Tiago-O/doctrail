@@ -54,8 +54,8 @@
     <div class="cards">
       <div class="card-single">
         <div>
-          <h1><%= @user.docs.count %></h1>           <%# NEEDS TO BE DYNAMIC %>
-            <span>Documents</span>
+          <h1><%= @user.docs.count %></h1>
+            <%= link_to "Documents", docs_path(current_user), class: "card-direct" %>
         </div>
         <div>
           <span class="las la-folder-open"></span>
@@ -63,8 +63,8 @@
       </div>
       <div class="card-single">
         <div>
-          <h1>39</h1>           <%# NEEDS TO BE DYNAMIC %>
-            <span>Versions</span>
+          <h1> <%= @user.versions.count %></h1>         
+            <%= link_to "Versions", versions_path(current_user), class: "card-direct" %>
         </div>
         <div>
           <span class="las la-clipboard"></span>
@@ -84,17 +84,17 @@
     <div class="recent-grid">
       <div class="projects">
         <div class="card">
-          <div class="card-header">
-            <h3>Recent Projects</h3>
-            <button>See All <span class="las la-arrow-right"></span></button>
-          </div>
-
+            <div class="card-header">
+              <h3>Documents Status</h3>
+                <button>See All <span class="las la-arrow-right"></span></button>
+            </div>
+      
           <div class="card-body">
             <table width='100%'>
               <thead>
                 <tr>
                   <td>Project Title</td>
-                  <td>Department</td>
+                  <td>Company</td>
                   <td>Status</td>
                 </tr>
               </thead>
@@ -132,7 +132,7 @@
       <div class="customers">
         <div class="card">
           <div class="card-header">
-            <h3>New Things</h3>
+            <h3>New Updates</h3>
             <button>See All <span class="las la-arrow-right">
             </span></button>
           </div>
@@ -156,8 +156,8 @@
               <div class="info">
                 <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
                 <div>
-                  <h4>Diogo Broco</h4>  <%# NEEDS TO BE DYNAMIC %>
-                  <small>Pipedrive</small>  <%# NEEDS TO BE DYNAMIC %>
+                 <h4><%= @user.first_name %> <%= @user.last_name %></h4>  
+                 <small><%= @user.company %></small> 
                 </div>
               </div>
                 <div class="contact">
@@ -171,8 +171,8 @@
               <div class="info">
                 <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
                 <div>
-                  <h4>Diogo Broco</h4>  <%# NEEDS TO BE DYNAMIC %>
-                  <small>Pipedrive</small>  <%# NEEDS TO BE DYNAMIC %>
+                  <h4><%= @user.first_name %> <%= @user.last_name %></h4>  
+                  <small><%= @user.company %></small> 
                 </div>
               </div>
                 <div class="contact">
@@ -187,15 +187,4 @@
       </div>
     </div>
   </main>
-</div>
-
-
-<div class="container mt-4">
-
-  <h5 class="btn btn-primary btn-decoration"><%= link_to 'Create new document', new_doc_path %></h5>
-
-  <h5>Documents:</h5>
-  <% @docs.each do |doc| %>
-    <p><%= link_to doc.title, doc_path(doc) %></p>
-  <% end %>
 </div>
