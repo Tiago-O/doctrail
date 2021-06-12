@@ -54,20 +54,20 @@
     <div class="cards">
       <div class="card-single">
         <div>
+          <h1>&nbsp</h1>
+          <%= link_to "Create a new document", new_doc_path, class: "card-direct" %>
+        </div>
+        <div>
+          <span class="las la-folder-plus"></span>
+        </div>
+      </div>
+      <div class="card-single">
+        <div>
           <h1><%= @user.docs.count %></h1>
             <%= link_to "Documents", docs_path, class: "card-direct" %>
         </div>
         <div>
           <span class="las la-folder-open"></span>
-        </div>
-      </div>
-      <div class="card-single">
-        <div>
-          <h1> <%= @user.versions.count %></h1>
-            <%= link_to "Versions", versions_path, class: "card-direct" %>
-        </div>
-        <div>
-          <span class="las la-clipboard"></span>
         </div>
       </div>
       <div class="card-single">
