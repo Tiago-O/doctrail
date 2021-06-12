@@ -10,4 +10,13 @@ class Doc < ApplicationRecord
   accepts_nested_attributes_for :userdocs
   # validates :locked, presence: true
   # validates :final, presence: true
+
+  def doc_uninvited_users
+    all_users = User.all
+    docs = Userdoc.where(doc: self)
+    invited_users = docs.map do |doc|
+      doc.user
+    end
+    all_users - invited_users
+  end
 end
