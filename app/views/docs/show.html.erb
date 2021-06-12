@@ -4,6 +4,12 @@
 
   <p><%= link_to 'Edit this document', edit_doc_path(@doc), class: 'btn btn-primary' %></p>
 
+  <%= simple_form_for @userdoc do |f|%>
+    <%= f.input :doc_id, as: :hidden, input_html: { value: @doc.id } %>
+    <%= f.input :user_id, label:'Add user:', collection: @doc.doc_uninvited_users, label_method: :first_name %>
+    <%= f.submit 'Add user', class: 'btn btn-primary mb-4' %>
+  <% end %>
+
   <% if @doc.locked %>
     <p class='btn btn-secundary mb-4' >Document is locked</p>
   <% else %>
