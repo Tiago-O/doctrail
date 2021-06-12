@@ -379,28 +379,3 @@ td .status {
     display: none;
   }
 }
-
-.section {
-  overflow: hidden;
-  padding: 1rem;
-
-  // note that we're transitioning flex, not height!
-  // transition: flex 0.3s ease-out;
-
-  // Safari only works if we do `all` here.
-  transition: all 0.3s ease-out;
-
-  height: auto;
-  flex: 1;
-}
-
-.section-collapsile.collapsed {
-  flex: 0;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 600px; // sadly, we're required to set at least the container height explicitly
-}
