@@ -1,37 +1,4 @@
-<input type="checkbox" id="nav-toggle">
-<div class="sidebar">
-  <div class="sidebar-brand">
-    <h2><span class="la la-file-code"></span><span>docTrail</span></h2>
-  </div>
 
-  <div class="sidebar-menu">
-    <ul>
-      <li>
-        <%= link_to user_path(current_user) do %>
-          <span class="las la-file-prescription"></span>
-          <span>Dashboard</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to user_path(current_user) do %>
-          <span class="las la-file-prescription"></span>
-          <span>Versions</span>
-        <% end %>
-      </li>
-      <li>
-        <% if @doc.locked%>
-          <a href=""><span class= "las la-file-download"></span>
-          <span>Document is locked</span></a>
-          <% else %>
-        <%= link_to new_doc_version_path(@doc) do %>
-          <span class="las la-file-prescription"></span>
-          <span>New Version</span>
-          <% end %>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-</div>
 
 <div class="main-content">
   <header>
@@ -57,7 +24,7 @@
     <div class="doc-body">
       <p><%= @doc.rich_body %></p>
     </div>
-    
+
   <%= simple_form_for @userdoc do |f|%>
     <%= f.input :doc_id, as: :hidden, input_html: { value: @doc.id } %>
     <%= f.input :user_id, label:'Add user:', collection: @doc.doc_uninvited_users, label_method: :first_name %>
