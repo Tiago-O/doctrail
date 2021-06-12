@@ -2,7 +2,8 @@ class VersionsController < ApplicationController
   before_action :set_version, only: %i[show edit update]
 
   def index
-    @versions = Version.all
+    @doc = Doc.find(params[:doc_id])
+    @versions = Version.where(doc: @doc)
   end
 
   def show
