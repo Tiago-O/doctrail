@@ -9,9 +9,9 @@ Doc.destroy_all
 User.destroy_all
 
 def create_doc_and_version(user)
-  doc = Doc.create!(title: Faker::Lorem.sentence, text: Faker::Lorem.paragraphs(number: 20), locked: false, final: false)
+  doc = Doc.create!(title: Faker::Lorem.sentence, rich_body: Faker::Lorem.paragraphs(number: 20), locked: false, final: false)
   Userdoc.create!(owner: true, user: user, doc: doc)
-  version = Version.create!(text: doc.text, accepted: false, doc: doc, user: user)
+  version = Version.create!(rich_body: doc.rich_body, accepted: false, doc: doc, user: user)
   Comment.create!(text: Faker::Lorem.sentence, version: version, user: user)
 end
 
