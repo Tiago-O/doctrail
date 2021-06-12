@@ -64,7 +64,7 @@
       <div class="card-single">
         <div>
           <h1> <%= @user.versions.count %></h1>         
-            <%= link_to "Versions", versions_path(current_user), class: "card-direct" %>
+            <%= link_to "Versions", version_path(current_user), class: "card-direct" %> <%# Stays for now %>
         </div>
         <div>
           <span class="las la-clipboard"></span>
