@@ -1,4 +1,5 @@
 <div class="container">
+  <%= link_to "Create a new document", new_doc_path %>
   <% @docs.reverse_each do |doc| %>
     <h3><%=link_to doc.title, doc_path(doc) %></h3>
   <% end %>
