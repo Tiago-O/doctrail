@@ -1,34 +1,66 @@
 <% Differ.format = :html %>
+<div class="text">
+  <h2><i class="las la-edit"></i>Editing Document: <%= @version.doc.title %></h2>
+</div>
 
-<div class="container">
+<div class="text-editor">
 
   <div class="texts_comparison d-flex">
-    <p><%= sanitize Differ.diff_by_word(@version.rich_body.to_plain_text, @version.doc.rich_body.to_plain_text).to_s %></p>
-    <p><%= @version.doc.rich_body%></p>
+    <div>
+      <h3 class="table-title">Updates</h3>
+        <p><%= sanitize Differ.diff_by_word(@version.rich_body.to_plain_text, @version.doc.rich_body.to_plain_text).to_s %></p>
+    </div>
+    <div>
+      <h3 class="table-title">Original</h3>
+        <p><%= @version.doc.rich_body%></p>
+    </div>
   </div>
 
   <!-- <del class="differ">Tu</del><ins class="differ">Eu</ins> es grande<ins class="differ"> ok</ins> -->
 
-  <p> <%= link_to 'Return to main document', doc_path(@version.doc), class: 'btn btn-primary btn-decoration' %></p>
-
   <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
-    <%= f.input :text, label: 'Insert a comment' %>
-    <%= f.submit 'Publish comment', class: 'btn btn-primary mb-4' %>
+    <%= f.input :text, :input_html => { :class => 'comment-wrapper' }, label: 'Insert a comment', placeholder: 'Add some comments here' %>
+      <div class="d-flex"></div>
+        <%= f.submit 'Publish comment', class: 'button' %> 
+        <%= link_to 'Return to main document', doc_path(@version.doc), class: 'button' %>
+      </div>
   <% end %>
 
-  <% if @comments.any? %>
-    <h5>Comments:</h5>
-    <% @comments.each do |comment| %>
-      <p><%= comment.text %></p>
-    <% end %>
-    <% else %>
-    <p class='btn btn-secundary mb-4'>no comments</p>
-  <% end %>
+<div class="comment-editor">
+  <table width='100%'>
+    <thead>
+      <tr>
+        <td><h5>Added Comments:</h5></td>
+        <td><h5>Name</h5></td>
+        <td><h5>Company</h5></td>
+      </tr>
+    </thead>
+      <tbody>
+        <tr>
+          <td> 
+            <% if @comments.any? %>
+              <% @comments.each do |comment| %>
+                <%= comment.text %>
+                  <td>
+                    <%= comment.user.first_name %>
+                    <%= comment.user.last_name %>
+                  </td>
+                  <td>
+                    <%= comment.user.company %>
+                  </td>
+              <% end %>
+              <% else %>
+              <p class='button'>No comments</p>
+            <% end %>
+          </td>
+        </tr>
+      </tbody> 
+  </table>
+</div>
 
   <% if !@version.accepted && @version.user != current_user %>
     <%= simple_form_for @version, method: :put, url: version_path(@version) do |f|%>
       <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
-      <%= f.submit 'Accept', class: 'btn btn-primary mb-4' %>
+      <%= f.submit 'Accept', class: 'accept-button' %>
     <% end %>
   <% end %>
-</div>

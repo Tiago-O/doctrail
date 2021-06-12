@@ -1,0 +1,92 @@
+:root {
+  --main-color: #0b2557;
+  --color-dark: rgb(38, 50, 56);
+  --text-grey: #8390A2;
+}
+
+.text {
+  font-family: 'Ubuntu', sans-serif;
+  padding-left: 30px;
+  padding-top: 10px;
+  font-weight: 700;
+}
+
+.button {
+  background: var(--main-color);
+  border-radius: 10px;
+  color: #fff;
+  font-size: .8rem;
+  padding: .5rem 1rem;
+  border: 1px solid var(--main-color);
+  width: fit-content;
+  margin-top: 15px;
+}
+
+.button input {
+  background: var(--main-color);
+  color: #fff;
+}
+
+.button:hover {
+  background: #0b2557e0;
+}
+
+.text-editor {
+  background: #fff;
+  border-radius: 16px;
+  justify-content: space-between;
+  box-shadow: 1px 3px 10px rgba(0,0,0,0.2);
+  padding: 30px;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-left: 3rem;
+  font-family: 'Ubuntu', sans-serif;
+  margin-top: revert;
+  margin-right: 30px;
+}
+
+.trix-content {
+  background: #fff;
+  border-left: solid 1px #ccc;
+  padding-left: 50px;
+}
+
+.table-title {
+  padding-left: 32px;
+}
+
+.comment-wrapper {
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.comment-editor {
+  background: #fff;
+  border-radius: 16px;
+  justify-content: space-between;
+  box-shadow: 1px 3px 10px rgba(0,0,0,0.2);
+  padding: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 20px;
+}
+
+.accept-button {
+  background: var(--main-color);
+  border-radius: 10px;
+  color: #fff;
+  font-size: .8rem;
+  padding: .5rem 1rem;
+  border: 1px solid var(--main-color);
+  width: fit-content;
+  margin-top: 8px;
+  margin-left: 100px;
+}

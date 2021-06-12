@@ -1,11 +1,16 @@
-<div class="container">
+<div class="text">
+  <h2><i class="las la-code-branch"></i>You are creating a new Version</h2>
+</div>
+
+<div class="text-editor">
   <%= simple_form_for [@doc, @version] do |f|%>
     <div class="form-inputs">
       <%= f.rich_text_area :rich_body %>
     </div>
 
-    <div class="form-actions mt-3">
-      <%= f.submit :submit %>
+    <div>
+      <%= f.submit "Submit", class:"button" %>
+      <%= link_to 'Go back', docs_path(current_user) %>
     </div>
   <% end %>
 </div>
