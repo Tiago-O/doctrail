@@ -2,16 +2,13 @@
   <h2><%= @doc.title %></h2>
   <p><%= @doc.rich_body %></p>
 
-  <%= link_to 'Edit', edit_doc_path(@doc) %>
+  <p><%= link_to 'Edit this document', edit_doc_path(@doc), class: 'btn btn-primary' %></p>
+
   <% if @doc.locked %>
-    <p>Document is locked</p>
+    <p class='btn btn-secundary mb-4' >Document is locked</p>
   <% else %>
-    <%= link_to 'New Version', new_doc_version_path(@doc) %>
+    <%= link_to 'New Version', new_doc_version_path(@doc), class: 'btn btn-primary mb-4' %>
   <% end %>
-
-  <p><%= link_to 'Return to Dashboard', user_path(current_user) %></p>
-
-  <p><%= link_to 'Edit this document', edit_doc_path(@doc) %></p>
 
   <% if @doc.versions.present? %>
     <% if @doc.versions.count == 1 %>
@@ -19,11 +16,13 @@
     <% else %>
       <h5>Versions:</h5>
     <% end %>
-    <% @doc.versions.each do |version| %>
-    <%= link_to "at #{version.created_at.strftime("%-d %b %Y, %H:%M")}", version_path(version) %>
+    <% @doc.versions.reverse_each  do |version| %>
+    <p><%= link_to "at #{version.created_at.strftime("%-d %b %Y, %H:%M")}", version_path(version), class: 'btn btn-secundary' %></p>
     <% end %>
   <% else %>
     <p>This documents has no versions yet</p>
   <% end %>
+
+  <p><%= link_to 'Return to Dashboard', user_path(current_user), class: 'btn btn-primary' %></p>
 
 </div>
