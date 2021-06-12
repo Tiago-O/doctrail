@@ -1,8 +1,8 @@
 <input type="checkbox" id="nav-toggle">
-<div class="sidebar">
-  <div class="sidebar-brand">
+ <div class="sidebar">
+   <div class="sidebar-brand">
     <h2><span class="la la-file-code"></span><span>docTrail</span></h2>
-  </div>
+   </div>
 
   <div class="sidebar-menu">
     <ul>
@@ -48,6 +48,30 @@
       <input type="search" placeholder="Search here"/>
     </div>
   </header>
+
+</div>
+
+<main>
+  <!-- it need to be responsive -->
+  <div class="container">
+
+    <div class="doc-body">
+      <p><%= @doc.rich_body %></p>
+    </div>
+
+  <%= simple_form_for @userdoc do |f|%>
+    <%= f.input :doc_id, as: :hidden, input_html: { value: @doc.id } %>
+    <%= f.input :user_id, label:'Add user:', collection: @doc.doc_uninvited_users, label_method: :first_name %>
+    <%= f.submit 'Add user', class: 'btn btn-primary mb-4' %>
+  <% end %>
+
+  <% if @doc.locked %>
+    <p class='btn btn-secundary mb-4' >Document is locked</p>
+  <% else %>
+    <%= link_to 'New Version', new_doc_version_path(@doc), class: 'btn btn-primary mb-4' %>
+  <% end %>
+
+    <!-- <p><%#= link_to 'Edit this document', edit_doc_path(@doc), class: 'btn btn-primary' %></p> -->
 
   <main>
     <!-- it need to be responsive -->
