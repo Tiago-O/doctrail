@@ -13,7 +13,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to user_path(current_user) do %>
+        <%= link_to doc_versions_path(@doc) do %>
           <span class="las la-file-prescription"></span>
           <span>Versions</span>
         <% end %>
@@ -48,6 +48,7 @@
       <input type="search" placeholder="Search here"/>
     </div>
   </header>
+
 </div>
 
 <main>
@@ -72,22 +73,33 @@
 
     <!-- <p><%#= link_to 'Edit this document', edit_doc_path(@doc), class: 'btn btn-primary' %></p> -->
 
+  <main>
+    <!-- it need to be responsive -->
+    <div class="container">
 
-
-    <% if @doc.versions.present? %>
-      <% if @doc.versions.count == 1 %>
-        <h5 class="mt-3">Version:</h5>
+      <% if @doc.versions.present? %>
+        <% if @doc.versions.count == 1 %>
+          <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} version", doc_versions_path(@doc)%></h5>
+        <% else %>
+          <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} versions", doc_versions_path(@doc)%></h5>
+        <% end %>
       <% else %>
-        <h5 class="mt-3">Versions:</h5>
+        <p>This documents has no versions yet</p>
       <% end %>
-      <% @doc.versions.reverse_each  do |version| %>
-      <p><%= link_to "at #{version.created_at.strftime("%-d %b %Y, %H:%M")}", version_path(version), class: 'btn btn-secundary' %></p>
-      <% end %>
-    <% else %>
-      <p>This documents has no versions yet</p>
+
+      <div class="doc-body mt-3">
+        <p><%= @doc.rich_body %></p>
+      </div>
+
+    <%= simple_form_for @userdoc do |f|%>
+      <%= f.input :doc_id, as: :hidden, input_html: { value: @doc.id } %>
+      <%= f.input :user_id, label:'Add user:', collection: @doc.doc_uninvited_users, label_method: :first_name %>
+      <%= f.submit 'Add user', class: 'btn btn-primary mb-4' %>
     <% end %>
 
-  </div>
-</main>
+      <!-- <p><%#= link_to 'Edit this document', edit_doc_path(@doc), class: 'btn btn-primary' %></p> -->
 
+    </div>
+  </main>
+</div>
 
