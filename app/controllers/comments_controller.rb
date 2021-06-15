@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @version
     else
-      render 'version/show'
+      flash[:alert] = 'comment not saved'
+      redirect_to @version
     end
   end
 
