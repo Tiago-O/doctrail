@@ -1,6 +1,53 @@
-<div class="container">
-  <%= link_to "Create a new document", new_doc_path %>
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <h2><span class="la la-file-code"></span><span>docTrail</span></h2>
+  </div>
+
+  <div class="sidebar-menu">
+    <ul>
+      <li>
+        <%= link_to user_path(current_user) do %>
+          <span class="las la-file-prescription"></span>
+          <span>Dashboard</span>
+        <% end %>
+      </li>
+      <li>
+        <a href=""><span class= "las la-file-alt"></span>
+        <span>Documents</span></a>
+      </li>
+      <li>
+        <a href=""><span class= "las la-file-download"></span>
+        <span>Versions</span></a>
+      </li>
+      <li>
+        <a href=""><span class= "las la-file-upload"></span>
+        <span>Finished Projects</span></a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="main-content">
+  <header>
+    <h2>
+      <label for="nav-toggle">
+        <span class="las la-bars"></span>
+      </label>
+
+       Documents
+    </h2>
+
+    <div class="search-wrapper">
+      <span class="las la-search"></span>
+      <input type="search" placeholder="Search here"/>
+    </div>
+
+  </header>
+
+<div class="text-editor">
   <% @docs.reverse_each do |doc| %>
     <h3><%=link_to doc.title, doc_path(doc) %></h3>
   <% end %>
 </div>
+<%= link_to "Create a new document", new_doc_path, class: 'button-create' %>
