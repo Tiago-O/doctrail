@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   resources :docs, except: [:destroy] do
+    collection do
+        get 'final'
+      end
     resources :versions, only: [:create, :new, :index] do
       resources :comments, only: [:create]
     end
   end
+
 
   resources :versions, except: [:create, :destroy, :new, :index]
   resources :comments, only: [:edit, :update, :destroy ]
