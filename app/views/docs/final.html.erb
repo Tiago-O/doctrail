@@ -1,0 +1,6 @@
+<div class="container">
+  <% @docs.each do |doc| %>
+    <i class="fas fa-file-signature"></i> <%= link_to doc.title, doc_path(doc) %>
+  <% end %>
+  <h6><%= link_to 'Go back', user_path(current_user) %></h6>
+</div>

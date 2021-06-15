@@ -5,6 +5,11 @@ class DocsController < ApplicationController
     @docs = Doc.joins(:userdocs).where("userdocs.user_id = ?", current_user)
   end
 
+  def final
+    @docs = Doc.joins(:userdocs).where(["userdocs.user_id = ? and final = ?", current_user, true])
+    # @docs_final = @docs.where(final: true)
+  end
+
   def show
     @userdoc = Userdoc.new
   end

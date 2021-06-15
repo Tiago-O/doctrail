@@ -8,7 +8,7 @@
   <div class="texts_comparison d-flex">
     <div>
       <h3 class="table-title">Updates</h3>
-        <p><%= sanitize Differ.diff_by_word(@version.rich_body.to_plain_text, @version.doc.rich_body.to_plain_text).to_s %></p>
+        <p><%= simple_format(Differ.diff_by_word(@version.rich_body.to_plain_text, @version.doc.rich_body.to_plain_text).to_s) %></p>
     </div>
     <div>
       <h3 class="table-title">Original</h3>
@@ -21,7 +21,7 @@
   <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
     <%= f.input :text, :input_html => { :class => 'comment-wrapper' }, label: 'Insert a comment', placeholder: 'Add some comments here' %>
       <div class="d-flex"></div>
-        <%= f.submit 'Publish comment', class: 'button' %> 
+        <%= f.submit 'Publish comment', class: 'button' %>
         <%= link_to 'Return to main document', doc_path(@version.doc), class: 'button' %>
       </div>
   <% end %>
@@ -37,7 +37,7 @@
     </thead>
       <tbody>
         <tr>
-          <td> 
+          <td>
             <% if @comments.any? %>
               <% @comments.each do |comment| %>
                 <%= comment.text %>
@@ -54,7 +54,7 @@
             <% end %>
           </td>
         </tr>
-      </tbody> 
+      </tbody>
   </table>
 </div>
 

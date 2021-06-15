@@ -12,16 +12,16 @@
         <span>Dashboard</span></a>
       </li>
       <li>
-        <a href=""><span class= "las la-file-alt"></span>
-        <span>Documents</span></a>
+        <%= link_to docs_path do %>
+          <span class="las la-file-prescription"></span>
+          <span>Documents</span>
+        <% end %>
       </li>
       <li>
-        <a href=""><span class= "las la-file-download"></span>
-        <span>Versions</span></a>
-      </li>
-      <li>
-        <a href=""><span class= "las la-file-upload"></span>
-        <span>Finished Projects</span></a>
+        <%= link_to final_docs_path do %>
+          <span class="las la-file-prescription"></span>
+          <span>Finished Projects</span>
+        <% end %>
       </li>
     </ul>
   </div>
@@ -72,8 +72,14 @@
       </div>
       <div class="card-single">
         <div>
-          <h1>20</h1>           <%# NEEDS TO BE DYNAMIC %>
-            <span>Finished Projects</span>
+          <% count = 0 %>
+          <% @user.docs.each do |doc| %>
+            <% if doc.final %>
+              <% count += 1 %>
+            <% end %>
+          <% end %>
+          <h1><%= count %></h1>           <%# NEEDS TO BE DYNAMIC %>
+            <%= link_to "Finished Documents", final_docs_path %>
         </div>
         <div>
           <span class="las la-file-signature"></span>
