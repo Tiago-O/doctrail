@@ -21,7 +21,7 @@
   <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
     <%= f.input :text, :input_html => { :class => 'comment-wrapper' }, label: 'Insert a comment', placeholder: 'Add some comments here' %>
       <div class="d-flex"></div>
-        <%= f.submit 'Publish comment', class: 'button' %> 
+        <%= f.submit 'Publish comment', class: 'button' %>
         <%= link_to 'Return to main document', doc_path(@version.doc), class: 'button' %>
       </div>
   <% end %>
@@ -36,25 +36,18 @@
       </tr>
     </thead>
       <tbody>
-        <tr>
-          <td> 
-            <% if @comments.any? %>
-              <% @comments.each do |comment| %>
-                <%= comment.text %>
-                  <td>
-                    <%= comment.user.first_name %>
-                    <%= comment.user.last_name %>
-                  </td>
-                  <td>
-                    <%= comment.user.company %>
-                  </td>
-              <% end %>
-              <% else %>
-              <p class='button'>No comments</p>
-            <% end %>
-          </td>
-        </tr>
-      </tbody> 
+        <% if @comments.any? %>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= comment.text %></td>
+              <td><%= comment.user.first_name %> <%= comment.user.last_name %></td>
+              <td><%= comment.user.company %></td>
+            </tr>
+          <% end %>
+          <% else %>
+          <tr>No comments</tr>
+        <% end %>
+      </tbody>
   </table>
 </div>
 
