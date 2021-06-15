@@ -20,6 +20,20 @@
   border: 1px solid var(--main-color);
   width: fit-content;
   margin-top: 15px;
+  transition: ease-in-out .3s;
+}
+
+.button-create {
+  background: var(--main-color);
+  border-radius: 10px;
+  color: #fff;
+  font-size: .8rem;
+  padding: .5rem 1rem;
+  margin-left: 100px;
+  border: 1px solid var(--main-color);
+  width: fit-content;
+  margin-top: 15px;
+  transition: ease-in-out .3s;
 }
 
 .button input {
@@ -28,7 +42,7 @@
 }
 
 .button:hover {
-  background: #0b2557e0;
+  background: #103479;
 }
 
 .text-editor {

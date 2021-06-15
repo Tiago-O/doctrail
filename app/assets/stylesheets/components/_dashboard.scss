@@ -312,7 +312,6 @@ td .status {
 }
 
 #nav-toggle:checked ~ .main-content header {
-  width: calc(100% - 70px);
   left: 70px;
 }
 
@@ -320,23 +319,23 @@ td .status {
   .sidebar {
     width: 70px;
   }
-  
+
   .sidebar-brand,
   .sidebar li {
     padding-left: 1rem;
     text-align: center;
   }
-  
+
   .sidebar li a {
     padding-left: 0rem;
   }
-  
-  
+
+
   .sidebar .sidebar-brand h2 span:last-child,
   .sidebar li a span:last-child {
     display: none;
   }
-  
+
   .main-content {
     margin-left: 70px;
   }

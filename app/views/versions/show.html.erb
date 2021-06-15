@@ -36,24 +36,17 @@
       </tr>
     </thead>
       <tbody>
-        <tr>
-          <td>
-            <% if @comments.any? %>
-              <% @comments.each do |comment| %>
-                <%= comment.text %>
-                  <td>
-                    <%= comment.user.first_name %>
-                    <%= comment.user.last_name %>
-                  </td>
-                  <td>
-                    <%= comment.user.company %>
-                  </td>
-              <% end %>
-              <% else %>
-              <p class='button'>No comments</p>
-            <% end %>
-          </td>
-        </tr>
+        <% if @comments.any? %>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= comment.text %></td>
+              <td><%= comment.user.first_name %> <%= comment.user.last_name %></td>
+              <td><%= comment.user.company %></td>
+            </tr>
+          <% end %>
+          <% else %>
+          <tr>No comments</tr>
+        <% end %>
       </tbody>
   </table>
 </div>
