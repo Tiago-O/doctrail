@@ -8,7 +8,7 @@
   <div class="texts_comparison d-flex">
     <div>
       <h3 class="table-title">Updates</h3>
-        <p><%= simple_format(Differ.diff_by_word(@version.rich_body.to_plain_text, @version.doc.rich_body.to_plain_text).to_s) %></p>
+        <p><%= sanitize Differ.diff_by_word(@version.rich_body.to_plain_text, @version.doc.rich_body.to_plain_text).to_s %></p>
     </div>
     <div>
       <h3 class="table-title">Original</h3>
