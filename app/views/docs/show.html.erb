@@ -53,14 +53,11 @@
 <main>
   <!-- it need to be responsive -->
   <div class="container">
-    <% if @doc.versions.present? %>
-      <% if @doc.versions.count == 1 %>
-        <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} version", doc_versions_path(@doc)%></h5>
-      <% else %>
-        <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} versions", doc_versions_path(@doc)%></h5>
-      <% end %>
+
+    <% if @doc.versions.one? %>
+      <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} version", doc_versions_path(@doc)%></h5>
     <% else %>
-      <p>This documents has no versions yet</p>
+      <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} versions", doc_versions_path(@doc)%></h5>
     <% end %>
 
     <div class="doc-body mt-3">
@@ -78,4 +75,3 @@
     <!-- it need to be responsive -->
   </main>
 </div>
-

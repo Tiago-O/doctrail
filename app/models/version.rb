@@ -6,4 +6,9 @@ class Version < ApplicationRecord
   belongs_to :user
 
   validates :rich_body, presence: true
+
+  def previous_version(doc)
+    index = doc.versions.index(self)
+    doc.versions[index - 1]
+  end
 end
