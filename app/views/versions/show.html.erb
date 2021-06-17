@@ -1,22 +1,25 @@
-<% Differ.format = :html %>
+<% Diffy::Diff.default_format = :html %>
 <div class="text">
   <h2><i class="las la-edit"></i>Editing Document: <%= @version.doc.title %></h2>
 </div>
 
 <div class="text-editor">
-
-  <div class="texts_comparison d-flex">
-    <div>
-      <h3 class="table-title">Updates</h3>
-        <p><%= sanitize Differ.diff_by_word(@version.rich_body.to_plain_text, @version.doc.rich_body.to_plain_text).to_s %></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h3>Inserted</h3>
+        <p><%= sanitize Diffy::SplitDiff.new(@version.doc.rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).right %></p>
+      </div>
+      <div class="col-6">
+        <h3>Deleted</h3>
+        <p><%= sanitize Diffy::SplitDiff.new(@version.doc.rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).left %></p>
+      </div>
     </div>
-    <div>
+    <!-- <div>
       <h3 class="table-title">Original</h3>
-        <p><%= @version.doc.rich_body%></p>
-    </div>
+        <p><%#= @version.doc.rich_body%></p>
+    </div> -->
   </div>
-
-  <!-- <del class="differ">Tu</del><ins class="differ">Eu</ins> es grande<ins class="differ"> ok</ins> -->
 
   <%= simple_form_for [@version.doc, @version, @comment] do |f|%>
     <%= f.input :text, :input_html => { :class => 'comment-wrapper' }, label: 'Insert a comment', placeholder: 'Add some comments here' %>
