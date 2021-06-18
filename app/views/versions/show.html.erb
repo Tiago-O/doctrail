@@ -10,11 +10,14 @@
       <div class="row">
         <div class="col-6">
           <h3>Inserted</h3>
-          <p><%= sanitize Diffy::SplitDiff.new(@version.previous_version(@doc).rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).right %></p>
+          <!-- <p><%#= sanitize Diffy::SplitDiff.new(@version.previous_version(@doc).rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).right %></p> -->
+          <p id="original"><% @version.previous_version(@doc).rich_body.to_plain_text %></p>
+          <p id="other"><% @version.rich_body.to_plain_text %></p>
+          <p id="display"></p>
         </div>
         <div class="col-6">
           <h3>Deleted</h3>
-          <p><%= sanitize Diffy::SplitDiff.new(@version.previous_version(@doc).rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).left %></p>
+          <!-- <p><%#= sanitize Diffy::SplitDiff.new(@version.previous_version(@doc).rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).left %></p> -->
         </div>
       </div>
     <!-- <div>

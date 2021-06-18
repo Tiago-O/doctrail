@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("trix")
 require("@rails/actiontext")
-
+require('diff');
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -27,11 +27,14 @@ require("@rails/actiontext")
 
 // External imports
 import "bootstrap";
+import 'diff';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { displayDiff } from '../components/display_diff';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  displayDiff();
 });
