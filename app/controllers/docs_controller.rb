@@ -22,7 +22,8 @@ class DocsController < ApplicationController
   def create
     @doc = Doc.new(doc_params)
     @userdoc = Userdoc.new(doc: @doc, user: current_user, owner: true)
-    if @doc.save && @userdoc.save
+    @version = Version.new(rich_body: @doc.rich_body, user: current_user, doc: @doc, accepted: true)
+    if @doc.save && @userdoc.save && @version.save
       redirect_to @doc
     else
       render :new
