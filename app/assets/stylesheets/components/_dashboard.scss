@@ -78,9 +78,10 @@
   transition: margin-left 300ms;
 }
 
-header {
+.dashboard-header {
   display: flex;
   justify-content: space-between;
+  height: 105px;
   padding: 1.2rem;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   left: 345px;
@@ -89,13 +90,24 @@ header {
   transition: width 300ms;
 }
 
-header h2 {
+.dashboard-header {
   color: #555;
 }
 
-header label span {
+.dashboard-title {
+  color: #fff;
+  font-size: 42px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.dashboard-header label span {
   font-size: 1.2rem;
   padding-right: 1rem;
+}
+
+.finish-projects a {
+  color: var(--main-color);
+  font-weight: 700;
 }
 
 .search-wrapper {
@@ -130,6 +142,11 @@ header label span {
   display: inline-block;
   color: var(--text-grey);
   margin-top: -3px !important;
+  font-weight: 600;
+}
+
+.user-details {
+  padding-right: 18px;
 }
 
 main {

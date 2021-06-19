@@ -1,34 +1,51 @@
+<section class="showcase">
+  <header class="home-header">
+    <h2 class="home-title">doc<span>Trail</span></h2>
+    <div class="toggle"></div>
+  </header>
+    
+  <video src= <%= asset_path("video2.mp4") %>  class="home-video" muted autoplay loop></video>
+  
+  <div class="overlay"></div>
 
-<div class="container mt-4">
+  <div class="text">
+    <h2>Start working  </h2> 
+    <h3>Together</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.</p>
+      <% if user_signed_in? %>
+        <%= link_to 'Check your Dashboard', user_path(current_user) %> 
+        <% else %>
+          <%= link_to 'Sign up', new_user_registration_path %> 
+          <%= link_to 'Log in', new_user_session_path %> 
+      <% end %>
+    
 
-  <div class="row mb-5">
-    <div class="col">
-      <h1>docTrail</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium convallis nunc, luctus semper elit interdum sed. Curabitur accumsan felis id aliquet commodo. Phasellus in ex tempor, vulputate dolor et, porta sem.</p>
-
-      <div class="row">
-        <div class="col-6 mb-3">
-          <%= link_to "Create an account", new_user_registration_path, class: "btn btn-primary w-100" %>
-        </div>
-        <div class="col-6 mb-3">
-        <%= link_to "Log in", new_user_session_path, class: "btn btn-primary w-100" %>
-        </div>
-      </div>
-
-    </div>
-    <div class="col">
-      <img src="https://images.unsplash.com/photo-1457694587812-e8bf29a43845?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2851&q=80" alt="organized documents">
-    </div>
   </div>
-
-  <div class="row mb-5 flex-column-reverse flex-sm-row flex-md-row">
-    <div class="col">
-      <img src="https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80" alt="some papers">
-    </div>
-    <div class="col">
-      <h2>About us</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pretium convallis nunc, luctus semper elit interdum sed. Curabitur accumsan felis id aliquet commodo. Phasellus in ex tempor, vulputate dolor et, porta sem.</p>
-    </div>
-  </div>
-
+  <ul class="social">
+    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+    <li><a href="#"><i class="fab fa-github"></i></a></li>
+    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+  </ul>
+</section>
+<div class="menu">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Documents</a></li>
+    <li><a href="#">Check out new stuff</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+  </ul>
 </div>
+
+<script>
+  const menuToggle = document.querySelector('.toggle')
+  const showcase = document.querySelector('.showcase')
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active')
+    showcase.classList.toggle('active')
+  })
+</script>
