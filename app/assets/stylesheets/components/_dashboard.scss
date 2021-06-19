@@ -73,6 +73,7 @@
   color: #1083d5d6;
   border-radius: 30px 0px 0px 30px;
 }
+
 .main-content {
   margin-left: 345px;
   transition: margin-left 300ms;
@@ -112,6 +113,7 @@
 
 .search-wrapper {
   border: 1px solid #ccc;
+  max-width: fit-content;
   border-radius: 30px;
   height: 50px;
   display: flex;
@@ -153,6 +155,11 @@ main {
   padding: 2rem 1.5rem;
   background: #a7a7a712;
   min-height: calc(100vh - 90px);
+  margin-top: 20px;
+}
+
+.container a {
+  color: #111;
 }
 
 .card {

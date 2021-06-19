@@ -31,6 +31,11 @@
   height: 20px;
 }
 
+.typed-cursor {
+  background: #0b2557;
+  color: #0b2557;
+}
+
 .showcase header h2 span {
   color: #0b2557;
   font-weight: 700;
@@ -186,16 +191,28 @@
 
 .menu ul li{
   list-style: none;
+  padding-bottom: 50px;
+
 }
 
 .menu ul li a{
   text-decoration: none;
   font-size: 24px;
   color: #111;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
 }
 
 .menu ul li a:hover{
   color: #03a9f4; 
+}
+
+.menu a:hover {
+  border: solid 2px #0b2557;
+  font-weight: 700;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.5 ease;
 }
 
 @media (max-width: 991px){
