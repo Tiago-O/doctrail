@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :versions, except: [:create, :destroy, :new, :index]
   resources :comments, only: [:edit, :update, :destroy ]
-  resources :userdocs, only: [:create]
+  resources :userdocs, only: [:create, :edit, :update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
