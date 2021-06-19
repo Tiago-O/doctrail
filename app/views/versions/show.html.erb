@@ -63,6 +63,6 @@
   <% if !@version.accepted && @version.user != current_user %>
     <%= simple_form_for @version, method: :put, url: version_path(@version) do |f|%>
       <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
-      <%= f.submit 'Accept', class: 'accept-button' %>
+      <%= f.submit 'Accept this version', class: 'accept-button' %>
     <% end %>
   <% end %>

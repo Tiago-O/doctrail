@@ -1,4 +1,6 @@
 class UserdocsController < ApplicationController
+  before_action :set_userdoc, only: %i[update]
+
   def create
     @userdoc = Userdoc.new(userdoc_params)
     @userdoc.owner = false
@@ -11,9 +13,23 @@ class UserdocsController < ApplicationController
     end
   end
 
+  def update
+    @userdoc.update(userdoc_params)
+    if @userdoc.save
+      redirect_to @userdoc.doc
+    else
+      flash[:alert] = 'update failed'
+      render docs_path
+    end
+  end
+
   private
 
+  def set_userdoc
+    @userdoc = Userdoc.find(params[:id])
+  end
+
   def userdoc_params
-    params.require(:userdoc).permit(:user_id, :doc_id)
+    params.require(:userdoc).permit(:user_id, :doc_id, :happy)
   end
 end
