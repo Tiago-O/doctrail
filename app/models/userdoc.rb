@@ -4,10 +4,9 @@ class Userdoc < ApplicationRecord
 
   validates :owner, inclusion: [true, false]
 
-  def self.zero_happy?(userdocs, doc)
-    return false if userdocs.empty? || doc.nil?
+  def self.zero_happy?(userdocs)
+    return false if userdocs.empty?
 
     userdocs.where(happy: false).count.zero? # they are all happy
-    doc.update(final: true)
   end
 end

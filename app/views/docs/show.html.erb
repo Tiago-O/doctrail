@@ -77,7 +77,8 @@
     <% end %>
   <% end %>
 
-  <% if Userdoc.zero_happy?(@userdocs, @doc) %>
+  <% if Userdoc.zero_happy?(@userdocs) %>
+    <% @doc.final = true %>
     <p>Document accepted</p>
   <% end %>
 
