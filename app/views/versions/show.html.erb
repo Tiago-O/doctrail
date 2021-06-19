@@ -9,15 +9,15 @@
   <div class="container">
       <div class="row">
         <div class="col-6">
-          <h3>Inserted</h3>
+          <h3>New version</h3>
           <!-- <p><%#= sanitize Diffy::SplitDiff.new(@version.previous_version(@doc).rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).right %></p> -->
-          <p id="original"><% @version.previous_version(@doc).rich_body.to_plain_text %></p>
-          <p id="other"><% @version.rich_body.to_plain_text %></p>
+          <p id="original" data-text="<%=@version.previous_version(@doc).rich_body.to_plain_text%>"></p>
+          <p id="other" data-text="<%=@version.rich_body.to_plain_text%>"></p>
           <p id="display"></p>
         </div>
         <div class="col-6">
-          <h3>Deleted</h3>
-          <!-- <p><%#= sanitize Diffy::SplitDiff.new(@version.previous_version(@doc).rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).left %></p> -->
+          <h3>Original</h3>
+          <%= @version.previous_version(@doc).rich_body%>
         </div>
       </div>
     <!-- <div>
