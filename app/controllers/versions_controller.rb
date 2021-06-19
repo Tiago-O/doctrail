@@ -7,6 +7,7 @@ class VersionsController < ApplicationController
   end
 
   def show
+    @doc = @version.doc
     @comment = Comment.new
     @comments = Comment.where(version_id: @version).order(created_at: :desc)
   end
