@@ -3,25 +3,25 @@
     <h2 class="home-title">doc<span>Trail</span></h2>
     <div class="toggle"></div>
   </header>
-    
+
   <video src= <%= asset_path("video2.mp4") %>  class="home-video" muted autoplay loop></video>
-  
+
   <div class="overlay"></div>
 
   <div class="text">
-    <h2>Start <span id="banner-typed-text"></span></h2> 
+    <h2>Start <span id="banner-typed-text"></span></h2>
     <h3>Together</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
       consequat.</p>
       <% if user_signed_in? %>
-        <%= link_to 'Check your Dashboard', user_path(current_user) %> 
+        <%= link_to 'Check your Dashboard', user_path(current_user) %>
         <% else %>
-          <%= link_to 'Sign up', new_user_registration_path %> 
-          <%= link_to 'Log in', new_user_session_path %> 
+          <%= link_to 'Sign up', new_user_registration_path %>
+          <%= link_to 'Log in', new_user_session_path %>
       <% end %>
-    
+
   </div>
   <ul class="social">
     <li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -31,10 +31,12 @@
 </section>
 <div class="menu">
   <ul>
-    <li><%= link_to 'Dashboard', user_path(current_user) %></li>
-    <li><%= link_to 'Documents', docs_path(current_user) %></li>
-    <li><a href="#">About us</a></li>
-    <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+    <% if user_signed_in? %>
+      <li><%= link_to 'Dashboard', user_path(current_user) %></li>
+      <li><%= link_to 'Documents', docs_path(current_user) %></li>
+      <li><a href="#">About us</a></li>
+      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+    <% end %>
   </ul>
 </div>
 
