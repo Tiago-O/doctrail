@@ -5,3 +5,21 @@
   border-radius: 5px;
 }
 
+.text-editor a{
+  color: #111;
+}
+
+.text-editor h3:hover {
+  font-weight: 700;
+}
+
+.main-content-docs {
+  margin-left: 345px;
+  transition: margin-left 300ms;
+  padding-top: 20px;
+  padding-left: 15px;
+}
+
+#nav-toggle:checked ~ .main-content-docs {
+  margin-left: 70px;
+}

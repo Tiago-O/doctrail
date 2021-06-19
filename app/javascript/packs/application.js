@@ -29,10 +29,14 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+
+import { loadDynamicBannerText } from '../components/banner';
 import { diff_match } from '../components/diff_match';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
+  loadDynamicBannerText();
   diff_match();
 });
