@@ -2,7 +2,7 @@ class DocsController < ApplicationController
   before_action :set_doc, only: [:show, :edit, :update]
 
   def index
-    @docs = Doc.joins(:userdocs).where("userdocs.user_id = ?", current_user)
+    @docs = Doc.joins(:userdocs).where(["userdocs.user_id = ? and final = ?", current_user, false])
   end
 
   def final
