@@ -78,13 +78,7 @@
       </div>
       <div class="card-single">
         <div class="finish-projects">
-          <% count = 0 %>
-          <% @user.docs.each do |doc| %>
-            <% if doc.final %>
-              <% count += 1 %>
-            <% end %>
-          <% end %>
-          <h1><%= count %></h1>           <%# NEEDS TO BE DYNAMIC %>
+          <h1><%= @docs_final.count %></h1>
             <%= link_to "Finished Documents", final_docs_path %>
         </div>
         <div>
@@ -98,43 +92,42 @@
         <div class="card">
             <div class="card-header">
               <h3>Documents Status</h3>
-                <button>See All <span class="las la-arrow-right"></span></button>
+                <%= link_to docs_path do %>
+                  <button>See All <span class="las la-arrow-right"></span></button>
+                <% end %>
             </div>
 
           <div class="card-body">
             <table width='100%'>
               <thead>
                 <tr>
-                  <td>Project Title</td>
-                  <td>Company</td>
+                  <td>Document</td>
+                  <td>Version</td>
                   <td>Status</td>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>UI design</td>
-                  <td>Web development</td>
-                  <td>
-                    <span class="status purple"></span>
-                    review
-                  </td>
-                </tr>
-                <tr>
-                  <td>Web Development</td>
-                  <td>Frontend</td>
-                  <td>
-                    <span class="status blue"></span>
-                    In Progress
-                  </td>
-                </tr>
-                <tr>
-                  <td>Ushop app</td>
-                   <td>Mobile development</td>
-                  <td>
-                    <span class="status orange"></span>
-                    Pending
-                  </td>
-                </tr>
+                <% if @docs_not_final.any? %>
+                  <% @docs_not_final.last(5).reverse_each do |doc| %>
+                  <tr>
+                    <td><%=link_to doc.title, doc_path(doc) %></td>
+                    <td><%=link_to "Number #{doc.versions.count}", version_path(doc.versions.last)%></td>
+                    <td>
+                      <% if doc.versions.last.accepted %>
+                      <span class="status green"></span>
+                      Accepted
+                      <% else %>
+                      <span class="status orange"></span>
+                      Pending acceptance
+                      <% end %>
+                    </td>
+                  </tr>
+                  <% end %>
+                  <% else %>
+                  <tr>
+                    <td>No activity yet</td>
+                  </tr>
+                <% end %>
               </tbody>
             </table>
           </div>
