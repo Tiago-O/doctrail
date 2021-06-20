@@ -45,11 +45,10 @@
       <label for="nav-toggle">
         <span class="las la-bars"></span>
       </label>
-
-      Versions
+      Versions of document: <%= @doc.title %>
     </h2>
 
-    <div class="search-wrapper">
+    <div class="search-wrapper ml-5">
       <span class="las la-search"></span>
       <input type="search" placeholder="Search here"/>
     </div>
@@ -57,8 +56,10 @@
 
   <main>
     <div class="container">
-      <% @versions.each do |version| %>
-        <p><i class="fas fa-file-import"></i> <%=link_to "#{version.created_at.strftime("%-d %b %Y, %H:%M")}", version_path(version) %></p>
+      <% counter = @versions.count %>
+      <% @versions.reverse_each do |version| %>
+        <p><i class="fas fa-file-import"></i> <%=link_to "Version number #{counter}: #{version.created_at.strftime("%-d %b %Y, %H:%M")}", version_path(version) %></p>
+        <% counter -= 1 %>
       <% end %>
     </div>
   </main>

@@ -1,24 +1,33 @@
-<% Diffy::Diff.default_format = :html %>
-<div class="text">
+
+<!-- <div class="text">
   <h2><i class="las la-edit"></i>Editing Document: <%= @version.doc.title %></h2>
-</div>
+</div> -->
 
 <div class="text-editor">
 
-
   <div class="container">
       <div class="row">
-        <div class="col-6">
-          <h3>New version</h3>
-          <!-- <p><%#= sanitize Diffy::SplitDiff.new(@version.previous_version(@doc).rich_body.to_plain_text, @version.rich_body.to_plain_text, format: :html).right %></p> -->
-          <p id="original" data-text="<%=@version.previous_version(@doc).rich_body.to_plain_text%>"></p>
-          <p id="other" data-text="<%=@version.rich_body.to_plain_text%>"></p>
-          <p id="display"></p>
-        </div>
-        <div class="col-6">
+        <% if @doc.versions.first != @version %>
+
+          <div class="col-6">
+            <h3>New version</h3>
+            <div id="original" data-text="<%=@version.previous_version(@doc).rich_body.to_plain_text%>"></div>
+            <div id="other" data-text="<%=@version.rich_body.to_plain_text%>"></div>
+            <div id="display"></div>
+          </div>
+          <div class="col-6">
+            <h3>Document</h3>
+            <div><%= @version.previous_version(@doc).rich_body%></div>
+          </div>
+
+      <% else %>
+        <div class="col-12">
           <h3>Original</h3>
-          <%= @version.previous_version(@doc).rich_body%>
+          <div><%= @version.rich_body%></div>
         </div>
+
+      <% end %>
+
       </div>
     <!-- <div>
 
