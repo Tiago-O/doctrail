@@ -46,7 +46,7 @@
   </header>
 
 <div class="text-editor">
-  <% @docs.reverse_each do |doc| %>
+  <% @docs.each do |doc| %>
     <h3><%=link_to doc.title, doc_path(doc) %></h3>
   <% end %>
 </div>
