@@ -1,4 +1,6 @@
 class Doc < ApplicationRecord
+  include PgSearch::Model
+
   has_rich_text :rich_body
 
   has_many :userdocs
@@ -19,4 +21,10 @@ class Doc < ApplicationRecord
     end
     all_users - invited_users
   end
+
+  pg_search_scope :search_by_title,
+    against: :title,
+    using: {
+      tsearch: { prefix: true }
+    }
 end
