@@ -36,6 +36,6 @@ import { diff_match } from '../components/diff_match';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  // loadDynamicBannerText();
-  diff_match();
+  loadDynamicBannerText();
+  // diff_match();
 });

@@ -3,7 +3,8 @@ class DocsController < ApplicationController
 
   def index
     if params[:query].present?
-      @docs = Doc.search_by_title(params[:query])
+      user_docs = Doc.joins(:userdocs).where("userdocs.user_id = ?", current_user).order(created_at: :desc)
+      @docs = user_docs.search_by_title(params[:query])
     else
       @docs = Doc.joins(:userdocs).where(["userdocs.user_id = ? and final = ?", current_user, false]).order(created_at: :desc)
     end
