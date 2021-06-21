@@ -40,7 +40,13 @@
 
     <div class="search-wrapper">
       <span class="las la-search"></span>
-      <input type="search" placeholder="Search here"/>
+      <%= form_tag docs_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              autocomplete: "off",
+              placeholder: "Search document"
+            %>
+          <% end %>
     </div>
 
   </header>
@@ -50,4 +56,7 @@
     <h3><%=link_to doc.title, doc_path(doc) %></h3>
   <% end %>
 </div>
-<%= link_to "Create a new document", new_doc_path, class: 'button-create' %>
+
+<div class="mb-2">
+  <%= link_to "Create a new document", new_doc_path, class: 'button-create' %>
+</div>

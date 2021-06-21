@@ -2,7 +2,12 @@ class DocsController < ApplicationController
   before_action :set_doc, only: [:show, :edit, :update]
 
   def index
-    @docs = Doc.joins(:userdocs).where(["userdocs.user_id = ? and final = ?", current_user, false]).order(created_at: :desc)
+    if params[:query].present?
+      user_docs = Doc.joins(:userdocs).where("userdocs.user_id = ?", current_user).order(created_at: :desc)
+      @docs = user_docs.search_by_title(params[:query])
+    else
+      @docs = Doc.joins(:userdocs).where(["userdocs.user_id = ? and final = ?", current_user, false]).order(created_at: :desc)
+    end
   end
 
   def final
