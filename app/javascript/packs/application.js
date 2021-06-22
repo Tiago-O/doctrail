@@ -36,6 +36,13 @@ import { diff_match } from '../components/diff_match';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  loadDynamicBannerText();
-  // diff_match();
+  const pagesHome = document.querySelector(".pages.home")
+  if (pagesHome) {
+    loadDynamicBannerText();
+  }
+
+  const versionsShow = document.querySelector(".versions.show")
+  if (versionsShow) {
+    diff_match();
+  }
 });

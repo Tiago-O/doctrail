@@ -1,9 +1,11 @@
 import { diff_match_patch } from '../components/diff_match_patch_uncompressed';
 
 const diff_match = () => {
-  const original = document.getElementById('original').dataset.text;
+  const original = document.getElementById('original').dataset.text.trim();
   const other = document.getElementById('other').dataset.text;
   const display = document.getElementById('display');
+  console.log(original);
+  console.log("display", display);
   const dmp = new diff_match_patch();
         const diff = dmp.diff_main(original, other);
         // Result: [(-1, "Hell"), (1, "G"), (0, "o"), (1, "odbye"), (0, " World.")]
