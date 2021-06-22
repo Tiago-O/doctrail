@@ -32,10 +32,14 @@
 <div class="menu">
   <ul>
     <% if user_signed_in? %>
+      <li><%= link_to 'About us', about_path %></li>
       <li><%= link_to 'Dashboard', user_path(current_user) %></li>
       <li><%= link_to 'Documents', docs_path(current_user) %></li>
-      <li><a href="#">About us</a></li>
       <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'About us', about_path %></li>
+      <li><%= link_to 'Sign up', new_user_registration_path%></li>
+      <li><%= link_to 'Log in', new_user_session_path %></li>
     <% end %>
   </ul>
 </div>
