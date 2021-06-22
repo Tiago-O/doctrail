@@ -28,13 +28,12 @@
   </div>
 </div>
 
-<div class="main-content-docs">
-  <header>
+<div class="main-content">
+  <header class="dashboard-header">
+
     <h2>
       <label for="nav-toggle">
-        <span class="las la-bars"></span>
-      </label>
-
+        <span class="las la-bars"></span></label>
        Documents
     </h2>
 
@@ -49,7 +48,10 @@
           <% end %>
     </div>
 
+    <%= render 'shared/avatar' %>
+
   </header>
+
 
 <div class="text-editor">
   <% @docs.each do |doc| %>

@@ -1,4 +1,5 @@
 <div class="container">
+  <%= render 'shared/avatar' %>
   <% @docs.each do |doc| %>
     <i class="fas fa-file-signature"></i> <%= link_to doc.title, doc_path(doc) %>
   <% end %>

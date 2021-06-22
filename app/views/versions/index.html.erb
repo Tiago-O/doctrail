@@ -40,13 +40,15 @@
 </div>
 
 <div class="main-content">
-  <header>
+  <header class="dashboard-header">
     <h2>
       <label for="nav-toggle">
         <span class="las la-bars"></span>
       </label>
       Versions of document: <%= @doc.title %>
     </h2>
+
+    <%= render 'shared/avatar' %>
 
   </header>
 
