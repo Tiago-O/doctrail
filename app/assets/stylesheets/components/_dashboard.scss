@@ -99,11 +99,16 @@
   color: #fff;
   font-size: 42px;
   font-family: 'Poppins', sans-serif;
+  transition: all 0.3 ease;
 }
 
 .dashboard-header label span {
   font-size: 1.2rem;
   padding-right: 1rem;
+}
+
+.dashboard-title:hover {
+  color: #1982ac6c;
 }
 
 .finish-projects a {
@@ -155,7 +160,6 @@ main {
   padding: 2rem 1.5rem;
   background: #a7a7a712;
   min-height: calc(100vh - 90px);
-  margin-top: 20px;
 }
 
 .container a {

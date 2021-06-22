@@ -14,7 +14,7 @@ body {
 
 .sign {
   padding-top: 40px;
-  color: #b98ad3;
+  color: #0b2557;
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 23px;
@@ -42,7 +42,7 @@ body {
 
 .add-photo {
   width: 76%;
-  color: #8c1b7b;
+  color: #0b2557;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
@@ -93,7 +93,7 @@ form.form1 {
   cursor: pointer;
   border-radius: 5em;
   color: #fff;
-  background: linear-gradient(to right, #9C27B0, #E040FB);
+  background: linear-gradient(to right, #0b2657, #0b26577c);
   border: 0;
   padding-left: 40px;
   padding-right: 40px;
@@ -114,19 +114,7 @@ form.form1 {
   font-weight: bold;
 }
 
-a {
-  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-  color: #e08eef;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #e08eef52;
-  transition: ease-in-out 0.3s;
-}
-
 .submit:hover {
   transition: ease-in-out 0.3s;
-  color: #e08eef52;
+  color: #0b26579f;
 }
