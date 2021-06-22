@@ -1,7 +1,66 @@
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <h2><span class="la la-file-code"></span><span>docTrail</span></h2>
+  </div>
+
+  <div class="sidebar-menu">
+    <ul>
+      <li>
+        <%= link_to user_path(current_user) do %>
+          <span class="las la-file-prescription"></span>
+          <span>Dashboard</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to docs_path do %>
+          <span class= "las la-file-alt"></span>
+          <span>Documents</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="main-content">
+  <header class="dashboard-header">
+    <h2>
+      <label for="nav-toggle">
+        <span class="las la-bars"></span>
+      </label>
+
+      Finished Projects
+    </h2>
+
+    <div class="search-wrapper">
+      <span class="las la-search"></span>
+      <%= form_tag docs_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              autocomplete: "off",
+              placeholder: "Search document"
+            %>
+          <% end %>
+    </div>
+
+    <div class="user-wrapper">
+      <div class="user-details">
+        <h4><%= current_user.first_name %></h4>
+        <small> <%= current_user.company %></small>
+      </div>
+      <div>
+      <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= image_tag "https://image.flaticon.com/icons/png/512/709/709722.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+      </div>
+    </div>
+  </header>
+
 <div class="container">
   <%= render 'shared/avatar' %>
   <% @docs.each do |doc| %>
     <i class="fas fa-file-signature"></i> <%= link_to doc.title, doc_path(doc) %>
   <% end %>
-  <h6><%= link_to 'Go back', user_path(current_user) %></h6>
 </div>
