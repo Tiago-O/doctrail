@@ -1,8 +1,62 @@
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <h2><span class="la la-file-code"></span><span> <%= link_to 'docTrail', root_path, class: 'dashboard-title' %></span></h2>
+  </div>
 
-<!-- <div class="text">
-  <h2><i class="las la-edit"></i>Editing Document: <%= @version.doc.title %></h2>
-</div> -->
+  <div class="sidebar-menu">
+    <ul>
+      <li>
+        <%= link_to user_path(current_user) do %>
+          <span class="las la-file-prescription"></span>
+          <span>Dashboard</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to doc_versions_path(@version.doc) do %>
+          <span class="las la-file-prescription"></span>
+          <span>Versions</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to docs_path do %>
+          <span class="las la-file-prescription"></span>
+          <span>Documents</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
 
+
+
+<div class="main-content">
+  <header class="dashboard-header">
+    <h2>
+      <label for="nav-toggle">
+        <span class="las la-bars"></span>
+      </label>
+      <%= @version.doc.title %>
+      V<%= @doc.versions.count %>
+    </h2>
+
+    <div class="search-wrapper">
+      <span class="las la-search"></span>
+      <%= form_tag docs_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              autocomplete: "off",
+              placeholder: "Search document"
+            %>
+          <% end %>
+    </div>
+
+    <%= render 'shared/avatar' %>
+
+  </header>
+
+
+<main>
 <div class="text-editor">
 
   <div class="container">
@@ -76,3 +130,6 @@
       <%= f.submit 'Accept this version', class: 'accept-button' %>
     <% end %>
   <% end %>
+
+  </main>
+</div>
