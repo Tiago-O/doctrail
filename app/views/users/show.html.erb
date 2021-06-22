@@ -33,7 +33,6 @@
       <label for="nav-toggle">
         <span class="las la-bars"></span>
       </label>
-
       Dashboard
     </h2>
 
@@ -48,19 +47,8 @@
           <% end %>
     </div>
 
-    <div class="user-wrapper">
-      <div class="user-details">
-        <h4><%= @user.first_name %></h4>
-        <small> <%= @user.company %></small>
-      </div>
-      <div>
-      <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% else %>
-          <%= image_tag "https://image.flaticon.com/icons/png/512/709/709722.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'shared/avatar' %>
+
   </header>
 
   <main>
