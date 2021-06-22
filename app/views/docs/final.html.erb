@@ -43,23 +43,11 @@
           <% end %>
     </div>
 
-    <div class="user-wrapper">
-      <div class="user-details">
-        <h4><%= current_user.first_name %></h4>
-        <small> <%= current_user.company %></small>
-      </div>
-      <div>
-      <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% else %>
-          <%= image_tag "https://image.flaticon.com/icons/png/512/709/709722.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'shared/avatar' %>
+
   </header>
 
 <div class="container">
-  <%= render 'shared/avatar' %>
   <% @docs.each do |doc| %>
     <i class="fas fa-file-signature"></i> <%= link_to doc.title, doc_path(doc) %>
   <% end %>
