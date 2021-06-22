@@ -36,6 +36,10 @@
   transition: ease-in-out .3s;
 }
 
+.button-create:hover {
+  color: #1982ac6c;
+}
+
 .button input {
   background: var(--main-color);
   color: #fff;
