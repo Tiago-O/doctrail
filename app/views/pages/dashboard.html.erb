@@ -63,7 +63,7 @@
       </div>
       <div class="card-single">
         <div>
-          <h1><%= @user.docs.count %></h1>
+          <h1><%= current_user.docs.count %></h1>
             <%= link_to "Documents", docs_path, class: "card-direct" %>
         </div>
         <div>
@@ -141,8 +141,8 @@
               <div class="info">
                 <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
                 <div>
-                  <h4><%= @user.first_name %> <%= @user.last_name %></h4>
-                  <small><%= @user.company %></small>
+                  <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+                  <small><%= current_user.company %></small>
                 </div>
               </div>
                 <div class="contact">
@@ -155,8 +155,8 @@
               <div class="info">
                 <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
                 <div>
-                 <h4><%= @user.first_name %> <%= @user.last_name %></h4>
-                 <small><%= @user.company %></small>
+                 <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+                 <small><%= current_user.company %></small>
                 </div>
               </div>
                 <div class="contact">
@@ -170,8 +170,8 @@
               <div class="info">
                 <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
                 <div>
-                  <h4><%= @user.first_name %> <%= @user.last_name %></h4>
-                  <small><%= @user.company %></small>
+                  <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+                  <small><%= current_user.company %></small>
                 </div>
               </div>
                 <div class="contact">
