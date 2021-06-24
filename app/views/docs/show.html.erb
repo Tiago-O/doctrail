@@ -69,8 +69,8 @@
       <%= f.submit 'Add user', class: 'button' %>
     <% end %>
   </div>
-    
-  <div class="doc-accept"> 
+
+  <div class="doc-accept">
     <% if !@userdoc.happy %>
       <%= simple_form_for @userdoc, method: :put, url: userdoc_path(@userdoc) do |f|%>
         <%= f.input :happy, as: :hidden, input_html: { value: true } %>
@@ -80,6 +80,8 @@
 
     <% if Userdoc.zero_happy?(@userdocs) %>
       <% @doc.final = true %>
+      <% @doc.locked = true %>
+      <% @doc.save %>
       <p id="accept-doc-btn">Document accepted</p>
     <% end %>
 
@@ -92,7 +94,7 @@
     <% end %>
   </div>
 
-   
-  
+
+
   </main>
 </div>
