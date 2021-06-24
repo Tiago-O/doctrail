@@ -11,6 +11,14 @@
   font-weight: 700;
 }
 
+.text-version {
+  color: #111;
+  font-family: 'Ubuntu', sans-serif;
+  padding-left: 30px;
+  padding-top: 20px;
+  font-weight: 700;
+}
+
 .button {
   background: var(--main-color);
   border-radius: 10px;
@@ -103,12 +111,31 @@ p {
 
 .accept-button {
   background: var(--main-color);
+  margin-left: 0;
   border-radius: 10px;
   color: #fff;
   font-size: .8rem;
   padding: .5rem 1rem;
+  margin-bottom: 8px;
   border: 1px solid var(--main-color);
   width: fit-content;
   margin-top: 8px;
-  margin-left: 100px;
+}
+
+#accept-doc-btn{
+  background: #21af2d96;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  padding: .9rem 25rem .9rem;
+  border: 1px solid #21af2d;
+  margin-top: 15px;
+  transition: ease-in-out .3s;
+}
+
+.doc-accept {
+  justify-content: flex-end;
 }
