@@ -139,3 +139,14 @@ p {
 .doc-accept {
   justify-content: flex-end;
 }
+
+.reject-button {
+  background: var(--main-color);
+  border-radius: 10px;
+  color: #fff;
+  font-size: .8rem;
+  padding: .5rem 1rem;
+  border: 1px solid var(--main-color);
+  width: fit-content;
+  margin-top: 8px;
+}

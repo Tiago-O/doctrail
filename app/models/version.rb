@@ -7,8 +7,13 @@ class Version < ApplicationRecord
 
   validates :rich_body, presence: true
 
-  def previous_version(doc)
-    index = doc.versions.index(self)
-    doc.versions[index - 1]
+  # def previous_version(doc)
+  #   index = doc.versions.index(self)
+  #   doc.versions[index - 1]
+  # end
+
+  def previous_version
+    self.doc.versions.where('created_at < ? AND accepted = ?', self.created_at, true).order(created_at: :desc).limit(1).first
   end
+
 end
