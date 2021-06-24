@@ -1,4 +1,56 @@
-<div class="text">
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <h2><span class="la la-file-code"></span><span> <%= link_to 'docTrail', root_path, class: 'dashboard-title' %></span></h2>
+  </div>
+
+  <div class="sidebar-menu">
+    <ul>
+      <li>
+        <%= link_to user_path(current_user) do %>
+          <span class="las la-file-prescription"></span>
+          <span>Dashboard</span>
+        <% end %>
+      </li>
+      <li>
+        <a href=""><span class= "las la-file-alt"></span>
+        <span>Documents</span></a>
+      </li>
+      <li>
+        <%= link_to final_docs_path do %>
+          <span class= "las la-file-upload"></span>
+          <span>Finished Projects</span></a>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="main-content">
+  <header class="dashboard-header">
+
+    <h2>
+      <label for="nav-toggle">
+        <span class="las la-bars"></span></label>
+       Version
+    </h2>
+
+    <div class="search-wrapper">
+      <span class="las la-search"></span>
+      <%= form_tag docs_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              autocomplete: "off",
+              placeholder: "Search document"
+            %>
+          <% end %>
+    </div>
+
+    <%= render 'shared/avatar' %>
+
+  </header>
+
+<div class="text-version">
   <h2><i class="las la-code-branch"></i>You are creating a new Version</h2>
 </div>
 
