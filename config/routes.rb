@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'about', to: 'pages#about'
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:edit, :update]
+  get 'dashboard', to: 'pages#dashboard'
 
   resources :docs, except: [:destroy] do
     collection do
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
       resources :comments, only: [:create]
     end
   end
-
 
   resources :versions, except: [:create, :destroy, :new, :index]
   resources :comments, only: [:edit, :update, :destroy ]
