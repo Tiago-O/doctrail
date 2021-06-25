@@ -59,13 +59,13 @@
         <p><i class="fas fa-file-import"></i> <%=link_to "Version number #{counter}: #{version.created_at.strftime("%-d %b %Y, %H:%M")}", version_path(version) %>
         <% counter -= 1 %>
           <% if version.accepted%>
-          (Accepted)
+            (Accepted)
           <% elsif !version.accepted && version != @versions.last %>
-          (Not accepted)
-          <% elsif %>
-          (Pending acceptance)</p>
+            (Not accepted)
+          <% else %>
+            (Pending acceptance)</p>
           <% end %>
-      <% end %>
+        <% end %>
     </div>
   </main>
 </div>
