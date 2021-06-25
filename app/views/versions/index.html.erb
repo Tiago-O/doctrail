@@ -56,8 +56,15 @@
     <div class="container">
       <% counter = @versions.count %>
       <% @versions.reverse_each do |version| %>
-        <p><i class="fas fa-file-import"></i> <%=link_to "Version number #{counter}: #{version.created_at.strftime("%-d %b %Y, %H:%M")}", version_path(version) %></p>
+        <p><i class="fas fa-file-import"></i> <%=link_to "Version number #{counter}: #{version.created_at.strftime("%-d %b %Y, %H:%M")}", version_path(version) %>
         <% counter -= 1 %>
+          <% if version.accepted%>
+          (Accepted)
+          <% elsif !version.accepted && version != @versions.last %>
+          (Not accepted)
+          <% elsif %>
+          (Pending acceptance)</p>
+          <% end %>
       <% end %>
     </div>
   </main>
