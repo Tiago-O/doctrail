@@ -32,6 +32,7 @@ import "bootstrap";
 
 import { loadDynamicBannerText } from '../components/banner';
 import { diff_match } from '../components/diff_match';
+import { initHelloToggle } from '../components/init_home_toggle';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -39,6 +40,7 @@ document.addEventListener('turbolinks:load', () => {
   const pagesHome = document.querySelector(".pages.home")
   if (pagesHome) {
     loadDynamicBannerText();
+    initHelloToggle();
   }
 
   const versionsShow = document.querySelector(".versions.show")
