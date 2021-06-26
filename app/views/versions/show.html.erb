@@ -38,6 +38,12 @@
       </label>
       <%= @version.doc.title %>
       v.<%= @doc.versions.index(@version) + 1 %>
+      <p class="mt-0 created-by">created by
+      <% if @version.user.company.nil? %>
+        <%=  @version.user.full_name%>
+      <% else %>
+        <%= @version.user.company %></p>
+      <% end %>
     </h2>
 
     <div class="search-wrapper">
