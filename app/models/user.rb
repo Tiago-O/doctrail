@@ -15,6 +15,10 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { minimum: 2 }
   validates :address, presence: true, length: { minimum: 2 }
 
+
+  has_many :notifications, as: :recipient, dependent: :destroy
+  has_noticed_notifications
+
   def full_name
     self.first_name + " " + self.last_name
   end

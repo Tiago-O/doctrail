@@ -10,6 +10,11 @@ class VersionsController < ApplicationController
     @doc = @version.doc
     @comment = Comment.new
     @comments = Comment.where(version_id: @version).order(created_at: :desc)
+    current_user.notifications.each do |notif|
+      notification = notif.to_notification
+      version = notification.params[:version]
+      notif.mark_as_read! if version == @version
+    end
   end
 
   def new

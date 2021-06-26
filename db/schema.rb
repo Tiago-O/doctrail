@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_19_140551) do
+ActiveRecord::Schema.define(version: 2021_06_26_094525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,28 @@ ActiveRecord::Schema.define(version: 2021_06_19_140551) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
+  end
+
+  create_table "repos", force: :cascade do |t|
+    t.boolean "owner", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "doc_id", null: false
+    t.index ["doc_id"], name: "index_repos_on_doc_id"
+    t.index ["user_id"], name: "index_repos_on_user_id"
+  end
+
   create_table "userdocs", force: :cascade do |t|
     t.bigint "doc_id", null: false
     t.bigint "user_id", null: false
@@ -107,6 +129,8 @@ ActiveRecord::Schema.define(version: 2021_06_19_140551) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "versions"
+  add_foreign_key "repos", "docs"
+  add_foreign_key "repos", "users"
   add_foreign_key "userdocs", "docs"
   add_foreign_key "userdocs", "users"
   add_foreign_key "versions", "docs"
