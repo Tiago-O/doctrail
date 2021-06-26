@@ -108,11 +108,11 @@
                     <td><%=link_to "Number #{doc.versions.count}", version_path(doc.versions.last)%></td>
                     <td>
                       <% if doc.versions.last.accepted %>
-                      <span class="status green"></span>
-                      Accepted
+                        <span class="status green"></span>
+                        Accepted
                       <% else %>
-                      <span class="status orange"></span>
-                      Pending acceptance
+                        <span class="status orange"></span>
+                        Pending acceptance
                       <% end %>
                     </td>
                   </tr>

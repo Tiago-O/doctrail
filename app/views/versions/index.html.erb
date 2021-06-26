@@ -62,6 +62,8 @@
             (Accepted)
           <% elsif !version.accepted && version != @versions.last %>
             (Not accepted)
+          <% elsif !version.accepted && version == @versions.last && !version.doc.locked %>
+            (Not accepted)
           <% else %>
             (Pending acceptance)</p>
           <% end %>
