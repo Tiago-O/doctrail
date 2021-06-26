@@ -5,6 +5,7 @@ class Doc < ApplicationRecord
 
   has_many :userdocs
   has_many :versions
+  has_many :users, through: :userdocs
 
   validates :title, presence: { message: "Title must be given please" }, length: { in: 3..50 }
   validates :rich_body, presence: true
