@@ -41,11 +41,17 @@ html {
   margin: auto 0 auto 40px;
 }
 
-.max-width {
-
+.carousel-item .image {
+  height: 100vh;
+  width: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.about-content {
-
+.carousel-item span {
+  color: #103479;
+  font-weight: 800;
+  background: #f0f8ff52;
+  opacity: .8;
+  border: .9px solid #103479;
 }
-
