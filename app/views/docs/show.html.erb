@@ -22,8 +22,8 @@
         <% if @doc.locked%>
           <a href=""><span class= "las la-file-download"></span>
           <span>Document is locked</span></a>
-          <% else %>
-        <%= link_to new_doc_version_path(@doc) do %>
+        <% else %>
+          <%= link_to new_doc_version_path(@doc) do %>
           <span class="las la-file-prescription"></span>
           <span>New Version</span>
           <% end %>
@@ -78,10 +78,7 @@
       <% end %>
     <% end %>
 
-    <% if Userdoc.zero_happy?(@userdocs) %>
-      <% @doc.final = true %>
-      <% @doc.locked = true %>
-      <% @doc.save %>
+    <% if @doc.zero_happy? %>
       <p id="accept-doc-btn">Document accepted</p>
     <% end %>
 

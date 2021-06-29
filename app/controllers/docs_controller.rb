@@ -17,7 +17,7 @@ class DocsController < ApplicationController
 
   def show
     @new_userdoc = Userdoc.new
-    @userdocs = Userdoc.where(doc_id: @doc)
+    @userdocs = @doc.userdocs
     @userdoc = Userdoc.where(doc_id: @doc, user_id: current_user).last
   end
 

@@ -110,6 +110,9 @@
                       <% if doc.versions.last.accepted %>
                         <span class="status green"></span>
                         Accepted
+                      <% elsif !doc.versions.last.accepted && !doc.locked %>
+                        <span class="status red"></span>
+                        Not Accepted
                       <% else %>
                         <span class="status orange"></span>
                         Pending acceptance

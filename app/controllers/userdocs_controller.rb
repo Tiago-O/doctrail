@@ -14,8 +14,12 @@ class UserdocsController < ApplicationController
   end
 
   def update
-    @userdoc.update(userdoc_params)
-    if @userdoc.save
+    if @userdoc.update(userdoc_params)
+      if @userdoc.doc.zero_happy?
+        @userdoc.doc.final = true
+        @userdoc.doc.locked = true
+        @userdoc.doc.save
+      end
       redirect_to @userdoc.doc
     else
       flash[:alert] = 'update failed'
