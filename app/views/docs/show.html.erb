@@ -51,11 +51,24 @@
     <!-- it need to be responsive -->
     <div class="container">
 
-      <% if @doc.versions.one? %>
-        <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} version", doc_versions_path(@doc)%></h5>
-      <% else %>
-        <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} versions", doc_versions_path(@doc)%></h5>
-      <% end %>
+      <div class="d-flex justify-content-between">
+        <% if @doc.versions.one? %>
+          <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} version", doc_versions_path(@doc)%></h5>
+        <% else %>
+          <h5 class="mt-3">This document has <%= link_to "#{@doc.versions.count} versions", doc_versions_path(@doc)%></h5>
+        <% end %>
+
+        <div class="dropdown">
+          <button class="button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Already allocated users
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% @doc.users.each do |user| %>
+              <a class="dropdown-item"><%= user.full_name %></a>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
       <div class="doc-body mt-3">
         <p><%= @doc.rich_body %></p>
