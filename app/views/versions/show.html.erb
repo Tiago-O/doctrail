@@ -36,14 +36,20 @@
       <label for="nav-toggle">
         <span class="las la-bars"></span>
       </label>
-      <%= @version.doc.title %>
-      v.<%= @doc.versions.index(@version) + 1 %>
-      <p class="mt-0 created-by">created by
-      <% if @version.user.company.nil? %>
-        <%=  @version.user.full_name%>
+      <% if @version.doc.title.length < 30 %>
+        <%= @version.doc.title %>
       <% else %>
-        <%= @version.user.company %></p>
+        <%= @version.doc.title[0..30] %>...
       <% end %>
+      v.<%= @doc.versions.index(@version) + 1 %>
+
+        <p class="mt-0 created-by">created by
+        <% if @version.user.company.nil? %>
+          <%=  @version.user.full_name%>
+        <% else %>
+          <%= @version.user.company %></p>
+        <% end %>
+
     </h2>
 
     <div class="search-wrapper">
