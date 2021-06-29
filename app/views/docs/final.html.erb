@@ -48,8 +48,8 @@
   </header>
 
   <div class="container p-5">
-    <% @docs.each do |doc| %>
-      <i class="fas fa-file-signature"></i> <%= link_to doc.title, doc_path(doc) %>
+    <% @docs.reverse_each do |doc| %>
+      <p><i class="fas fa-file-signature"></i> <%= link_to "#{doc.title} final at: #{doc.updated_at.strftime("%-d %b %Y, %H:%M")}", doc_path(doc) %></p>
     <% end %>
   </div>
 </div>
