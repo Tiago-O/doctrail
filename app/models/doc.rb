@@ -14,6 +14,11 @@ class Doc < ApplicationRecord
   # validates :locked, presence: true
   # validates :final, presence: true
 
+  def zero_happy?
+    return false if self.userdocs.empty?
+    userdocs.where(happy: false).count.zero? # they are all happy
+  end
+
   def doc_uninvited_users
     all_users = User.all
     docs = Userdoc.where(doc: self)
