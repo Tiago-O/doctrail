@@ -19,7 +19,7 @@
     <% if current_user.notifications.unread.any? %>
     <li class="nav-item dropdown ml-2">
       <span class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bell bell"></i></span>
-        <span class="badge badge-light notification-round"><%= current_user.notifications.count %></span>
+        <span class="badge badge-light notification-round"><%= current_user.notifications.unread.count %></span>
       <% end %>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
         <% current_user.notifications.unread.each do |notification| %>
