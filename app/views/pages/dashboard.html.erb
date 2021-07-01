@@ -134,27 +134,25 @@
       <div class="customers">
         <div class="card">
           <div class="card-header">
-            <h3>New Updates</h3>
-            <button>See All <span class="las la-arrow-right">
-            </span></button>
+            <h3>Last notifications</h3>
+            <!-- <button>See All <span class="las la-arrow-right">
+            </span></button> -->
           </div>
 
           <div class="card-body">
-            <div class="customer">
-              <div class="info">
-                <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
-                <div>
-                  <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
-                  <small><%= current_user.company %></small>
-                </div>
-              </div>
-                <div class="contact">
-                  <span class="las la-user-circle"></span>
-                  <span class="las la-comment"></span>
-                  <span class="las la-phone"></span>
-                </div>
-              </div>
+            <% current_user.notifications.last(4).each do |notification| %>
               <div class="customer">
+                <div class="info">
+                  <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
+                  <div>
+                    <%=link_to "#{notification.params[:version].doc.title} has a new version", notification.to_notification.url %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+              <!-- <div class="customer">
               <div class="info">
                 <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
                 <div>
@@ -167,23 +165,8 @@
                   <span class="las la-comment"></span>
                   <span class="las la-phone"></span>
                 </div>
+            </div> -->
 
-            </div>
-            <div class="customer">
-              <div class="info">
-                <img src="https://img.icons8.com/ios/452/google-docs.png" width="40px" height="40px" alt="">
-                <div>
-                  <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
-                  <small><%= current_user.company %></small>
-                </div>
-              </div>
-                <div class="contact">
-                  <span class="las la-user-circle"></span>
-                  <span class="las la-comment"></span>
-                  <span class="las la-phone"></span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
