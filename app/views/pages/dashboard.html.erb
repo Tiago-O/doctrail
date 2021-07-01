@@ -63,7 +63,7 @@
       </div>
       <div class="card-single">
         <div>
-          <h1><%= current_user.docs.count %></h1>
+          <h1><%= @docs_not_final.count %></h1>
             <%= link_to "Documents", docs_path, class: "card-direct" %>
         </div>
         <div>
