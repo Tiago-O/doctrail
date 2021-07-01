@@ -17,26 +17,26 @@ end
 
 puts 'Creating users, docs, userdocs, versions (texts identical to docs) & comments ...'
 
-user = User.create(first_name: 'Tiago',last_name: 'Oliveirinha', address: 'Arroios', phone_number: '911231212', company: 'Covillage', email: 'tiago@me.pt', password: '123456')
+user = User.create(first_name: 'Tiago',last_name: 'Oliveirinha', address: 'Arroios', phone_number: '911231212', company: 'FootManager', email: 'tiago@me.pt', password: '123456')
 file = URI.open('https://avatars.githubusercontent.com/u/63858592?v=4')
 user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user.save
-4.times { create_doc_and_version(user) }
+# 4.times { create_doc_and_version(user) }
 
-user = User.create(first_name: 'Diogo',last_name: 'Brôco', address: 'Intendente', phone_number: '934567890', company: 'Pipedrive', email: 'diogo@me.pt', password: '123456')
+user = User.create(first_name: 'Diogo',last_name: 'Brôco', address: 'Intendente', phone_number: '934567890', company: 'FootManager', email: 'diogo@me.pt', password: '123456')
 file = URI.open('https://avatars.githubusercontent.com/u/76879710?v=4')
 user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user.save
-4.times { create_doc_and_version(user) }
+# 4.times { create_doc_and_version(user) }
 
-user = User.create(first_name: 'Felipe',last_name: 'Santos', address: 'Alvalade', phone_number: '969876543', company: 'The Best', email: 'felipe@me.pt', password: '123456')
+user = User.create(first_name: 'Felipe',last_name: 'Santos', address: 'Alvalade', phone_number: '969876543', company: 'FootManager', email: 'felipe@me.pt', password: '123456')
 file = URI.open('https://avatars.githubusercontent.com/u/75455106?v=4')
 user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user.save
-4.times { create_doc_and_version(user) }
+# 4.times { create_doc_and_version(user) }
 
 puts "Created #{User.count} users"
-puts "Created #{Doc.count} docs"
-puts "Created #{Userdoc.count} userdocs"
-puts "Created #{Version.count} versions"
-puts "Created #{Comment.count} comments"
+# puts "Created #{Doc.count} docs"
+# puts "Created #{Userdoc.count} userdocs"
+# puts "Created #{Version.count} versions"
+# puts "Created #{Comment.count} comments"
